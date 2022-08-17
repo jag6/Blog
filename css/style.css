@@ -1,0 +1,79 @@
+* {
+    text-decoration: none;
+    box-sizing: border-box;
+    border: none;
+}
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+    line-height:1.5;
+}
+
+html, body {
+    min-height: 100vh;
+    position: relative;
+}
+
+body {
+    font-size: 8px;
+    font-family: 'Raleway', sans-serif;
+}
+
+main {
+    padding-bottom: 64px;
+}
+
+h1 {
+    font-size: 72px;
+    line-height: 96px;
+}
+
+h2 {
+    font-size: 48px;
+    line-height: 72px;
+}
+
+h3 {
+    font-size: 32px;
+    line-height: 64px;
+}
+
+h4 {
+    font-size: 24px;
+    line-height: 48px;
+}
+
+h5, label, input, button {
+    font-size: 21px;
+    line-height: 40px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 32px;
+}
+
+.myContainer {
+    padding: 0 5%;
+}
