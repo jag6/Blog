@@ -11,5 +11,62 @@
     <textarea required name="markdown" id="markdown" class="form-control"><%= article.markdown %></textarea>
 </div>
 
+<!-- MetaData -->
+
+<!-- Page -->
+<div>
+    <h2>Page MetaData</h2>
+</div>
+<div class="form-group">
+    <label for="pageTitle">Page Title</label>
+    <input required value="<%= article.pageTitle %>" type="text" name="pageTitle" id="pageTitle" class="form-control">
+</div>
+<div class="form-group">
+    <label for="pageDescription">Page Description</label>
+    <textarea name="pageDescription" id="pageDescription" class="form-control"><%= article.pageDescription %></textarea>
+</div>
+<div class="form-group">
+    <label for="author">Author</label>
+    <input required value="<%= article.author %>" type="text" name="author" id="author" class="form-control">
+</div>
+
+<!-- Twitter -->
+<div>
+    <h2>Twitter MetaData</h2>
+</div>
+<div class="form-group">
+    <label for="twitterTitle">Twitter Title</label>
+    <input required value="<%= article.twitterTitle %>" type="text" name="twitterTitle" id="twitterTitle" class="form-control">
+</div>
+<div class="form-group">
+    <label for="twitterDescription">Twitter Description</label>
+    <textarea name="twitterDescription" id="twitterDescription" class="form-control"><%= article.twitterDescription %></textarea>
+</div>
+<!-- <div class="form-group">
+    <label for="twitterImg">Twitter Image</label>
+    <input required value="<%= article.twitterImg %>" type="text" name="twitterImg" id="twitterImg" class="form-control">
+</div> -->
+
+<!-- Other Social Media -->
+<div>
+    <h2>Other Social Media MetaData</h2>
+</div>
+<div class="form-group">
+    <label for="ogTitle">OG Title</label>
+    <input required value="<%= article.ogTitle %>" type="text" name="ogTitle" id="ogTitle" class="form-control">
+</div>
+<div class="form-group">
+    <label for="ogDescription">OG Description</label>
+    <textarea name="ogDescription" id="ogDescription" class="form-control"><%= article.ogDescription %></textarea>
+</div>
+<!--<div class="form-group">
+    <label for="ogImg">OG Image</label>
+    <input required value="<%= article.ogImg %>" type="text" name="ogImg" id="ogImg" class="form-control">
+</div> -->
+<div class="form-group">
+    <label for="ogUrl">OG Url</label>
+    <input required value="<%= article.ogUrl %>" type="text" name="ogUrl" id="ogUrl" class="form-control">
+</div>
+
 <a href="/">Cancel</a>
 <button type="submit">SAVE</button>

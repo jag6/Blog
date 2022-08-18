@@ -20,7 +20,15 @@ articleRouter.post('/', async (req, res) => {
     let article = new Article({
         title: req.body.title,
         description: req.body.description,
-        markdown: req.body.markdown
+        markdown: req.body.markdown,
+        pageTitle: req.body.pageTitle,
+        pageDescription: req.body.pageDescription,
+        author: req.body.author,
+        twitterTitle: req.body.twitterTitle,
+        twitterDescription: req.body.twitterDescription,
+        ogTitle: req.body.ogTitle,
+        ogDescription: req.body.ogDescription,
+        ogUrl: req.body.ogUrl
     });
     try {
         article = await article.save();
@@ -36,15 +44,5 @@ articleRouter.delete('/:id', async (req, res) => {
     await Article.findByIdAndDelete(req.params.id)
     res.redirect('/')
 });
-
-/*articleRouter.delete(':/id', async (req, res) => {
-    const article = await Article.findById(req.params.id);
-    if(article) {
-        const deletedArticle = await article.remove();
-        res.send ({message: 'Article Deleted,', article: deletedArticle})
-    }else {
-        res.status(404).send({message: 'Article Not Found'})
-    }
-})*/
 
 export default articleRouter;

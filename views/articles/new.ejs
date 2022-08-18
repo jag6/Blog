@@ -7,7 +7,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="article"/>
+    <!-- Page Data -->
+    <title><%= article.pageTitle %></title>
+    <meta name="description" content="<%= article.pageDescription %>">
+    <meta name="author" content="<%= article.author %>">
+    <!-- Twitter MetaData -->
+    <meta name="twitter:title" content="<%= article.twitterTitle %>">
+    <meta property="twitter:description" content="<%= article.twitterDescription %>">
+    <!-- <meta name="twitter:image" content="<%= article.twitterImg %>"> -->
+    <!-- Other Social Media MetaData -->
+    <meta property="og:title" content="<%= article.ogTitle %>">
+    <meta property="og:description" content="<%= article.ogDescription %>">
+    <!-- <meta property="og:image" content="<%= article.ogImg %>"> -->
+    <meta property="og:url" content="<%= article.ogUrl %>">
 </head>
 <body>
     <div class="myContainer">

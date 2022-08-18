@@ -9,10 +9,43 @@ const articleSchema = new mongoose.Schema({
     },
     description: {
         type: String,
+        required: true
     },
     markdown: {
         type: String,
         required: true
+    },
+    pageTitle: {
+        type: String,
+        required: true,
+    },
+    pageDescription: {
+        type: String,
+        required: true,
+    },
+    author: {
+        type: String,
+        required: true,
+    },
+    twitterTitle: {
+        type: String,
+        required: true,
+    },
+    twitterDescription: {
+        type: String,
+        required: true,
+    },
+    ogTitle: {
+        type: String,
+        required: true,
+    },
+    ogDescription: {
+        type: String,
+        required: true,
+    },
+    ogUrl: {
+        type: String,
+        required: true,
     },
     createdAt: {
         type: Date,
