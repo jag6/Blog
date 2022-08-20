@@ -24,12 +24,16 @@
     <meta property="og:url" content="<%= article.ogUrl %>">
 </head>
 <body>
-    <div class="myContainer">
-        <h1><%= article.title %></h1>
-        <div><%= article.createdAt.toLocaleDateString() %></div>
-        <a href="/">All Articles</a>
-        <a href="/articles/edit/<% article.id %>">EDIT</a>
-        <div><%= article.markdown %></div>
-    </div>
+    <%- include('../components/header') %>
+    <main>
+        <div class="myContainer">
+            <h1><%= article.title %></h1>
+            <div><%= article.createdAt.toLocaleDateString() %></div>
+            <a href="/">All Articles</a>
+            <a href="/articles/edit/<%= article.id %>">EDIT</a>
+            <div><%- article.sanitizedHtml %></div>
+        </div>
+    </main>
+    <%- include('../components/footer') %>
 </body>
 </html>
