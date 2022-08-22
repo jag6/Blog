@@ -6,8 +6,8 @@ import contactRouter from "./routers/contactRouter";
 import userRouter from "./routers/userRouter";
 import Article from "./models/articleModel";
 import methodOverride from "method-override";
+import mongoSanitize from "express-mongo-sanitize";
 
-const app = express();
 mongoose.connect('mongodb://localhost/blog', 
     {   useNewUrlParser: true,
         useUnifiedTopology: true
@@ -17,6 +17,8 @@ mongoose.connect('mongodb://localhost/blog',
         console.log(error.reason);
     });
 
+const app = express();
+
 app.set("view engine", 'ejs');
 
 app.use(express.static("public")); 
@@ -24,6 +26,8 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 
 app.use(methodOverride('_method'));
+
+app.use(mongoSanitize());
 
 //gives the pages a url to be routed to
 app.use('/articles', articleRouter);
