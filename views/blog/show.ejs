@@ -3,7 +3,6 @@
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;0,800;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,18 +21,25 @@
     <meta property="og:description" content="<%= article.ogDescription %>">
     <!-- <meta property="og:image" content="<%= article.ogImg %>"> -->
     <meta property="og:url" content="<%= article.ogUrl %>">
+    <script src="/scripts/top-btn.js" defer></script>
 </head>
 <body>
     <%- include('../components/header') %>
     <main>
-        <div class="myContainer">
-            <h1><%= article.title %></h1>
-            <div><%= article.createdAt.toLocaleDateString() %></div>
-            <a href="/">All Articles</a>
-            <a href="edit/<%= article.id %>">EDIT</a>
+        <section class="myContainer">
+            <section class="top"><h1><%= article.title %></h1></section>
+            <div class="multiple-stuff-div">
+                <p><%= article.createdAt.toLocaleDateString() %></p>
+                <a class="b" href=""><%= article.category %></a>
+            </div>
+            <div class="multiple-btns-div">
+                <a class="btn blue" href="/">All Articles</a>
+                <a class="btn green"href="edit/<%= article.id %>">EDIT</a>
+            </div>
             <div><%- article.sanitizedHtml %></div>
-        </div>
+        </section>
     </main>
+    <button class="top-btn" id="topBtn" onclick="topFunction()" title="To the top">Top</button>
     <%- include('../components/footer') %>
 </body>
 </html>

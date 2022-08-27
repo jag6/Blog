@@ -1,3 +1,6 @@
+<section class="top2">
+    <h2>Article Content</h2>
+</section>
 <div class="form-group">
     <label for="title">Title</label>
     <input required value="<%= article.title %>" type="text" name="title" id="title" class="form-control">
@@ -18,9 +21,9 @@
 <!-- MetaData -->
 
 <!-- Page -->
-<div>
+<section class="top2">
     <h2>Page MetaData</h2>
-</div>
+</section>
 <div class="form-group">
     <label for="pageTitle">Page Title</label>
     <input required value="<%= article.pageTitle %>" type="text" name="pageTitle" id="pageTitle" class="form-control">
@@ -35,9 +38,9 @@
 </div>
 
 <!-- Twitter -->
-<div>
+<section class="top2">
     <h2>Twitter MetaData</h2>
-</div>
+</section>
 <div class="form-group">
     <label for="twitterTitle">Twitter Title</label>
     <input required value="<%= article.twitterTitle %>" type="text" name="twitterTitle" id="twitterTitle" class="form-control">
@@ -52,9 +55,9 @@
 </div> -->
 
 <!-- Other Social Media -->
-<div>
+<section class="top2">
     <h2>Other Social Media MetaData</h2>
-</div>
+</section>
 <div class="form-group">
     <label for="ogTitle">OG Title</label>
     <input required value="<%= article.ogTitle %>" type="text" name="ogTitle" id="ogTitle" class="form-control">
@@ -72,5 +75,7 @@
     <input required value="<%= article.ogUrl %>" type="text" name="ogUrl" id="ogUrl" class="form-control">
 </div>
 
-<a href="/">Cancel</a>
-<button type="submit">SAVE</button>
+<div class="multiple-btns-div">
+    <a href="/" class="btn red">Cancel</a>
+    <button type="submit" class="btn green">SAVE</button>
+</div>

@@ -9,7 +9,7 @@
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="article"/>
     <!-- Page Data -->
-    <title><%= article.pageTitle %></title>
+    <title>FAQ</title>
     <meta name="description" content="<%= article.pageDescription %>">
     <meta name="author" content="<%= article.author %>">
     <!-- Twitter MetaData -->
@@ -28,11 +28,9 @@
     <main>
         <section class="myContainer">
             <section class="top">
-                <h1>New Article</h1>
+                <h1>FAQ</h1>
             </section>
-            <form action="/blog" method="post">
-                <%- include('../components/formFields') %>
-            </form>
+            
         </section>
     </main>
     <button class="top-btn" id="topBtn" onclick="topFunction()" title="To the top">Top</button>

@@ -3,7 +3,6 @@
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;0,800;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,17 +21,19 @@
     <meta property="og:description" content="<%= article.ogDescription %>">
     <!-- <meta property="og:image" content="<%= article.ogImg %>"> -->
     <meta property="og:url" content="<%= article.ogUrl %>">
+    <script src="/scripts/top-btn.js" defer></script>
 </head>
 <body>
     <%- include('../components/header') %>
     <main>
-        <div class="myContainer">
-            <h1>Edit Article</h1>
+        <section class="myContainer margin-btm">
+            <section class="top"><h1>Edit Article</h1></section>
             <form action="/blog/<%= article.id %>?_method=put" method="post">
                 <%- include('../components/formFields') %>
             </form>
-        </div>
+        </section>
     </main>
     <%- include('../components/footer') %>
+    <button class="top-btn" id="topBtn" onclick="topFunction()" title="To the top">Top</button>
 </body>
 </html>

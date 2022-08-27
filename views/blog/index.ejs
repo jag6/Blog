@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;0,800;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,30 +20,45 @@
     <meta property="og:description" content="">
     <meta property="og:image" content="">
     <meta property="og:url" content="">
-    <script src="/scripts/test.js"></script>
+    <script src="/scripts/top-btn.js" defer></script>
 </head>
 <body>
     <%- include('../components/header') %>
     <main>
-        <div class="myContainer">
-            <h1>Articles</h1>
-            <a href="/blog/new">CREATE NEW</a>
+        <div class="icon-bar">
+            <ul>
+                <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="#" class="youtube"><i class="fa fa-youtube"></i></a></li>
+            </ul>
+          </div>
+        <section class="myContainer">
+            <section class="top"><h1>Articles</h1></section>
+            <!-- <a class="btn blue2" href="/blog/new">CREATE NEW</a> -->
             <% articles.forEach(article => { %>
-                <div class="card mt-4">
-                    <div class="card-body">
-                        <h2 class="card-title"><%= article.title %></h2>
-                        <div><%= article.createdAt.toLocaleDateString() %></div>
-                        <div class="card-text"><%= article.description %></div>
-                        <a href="blog/<%= article.slug %>">Read More</a>
-                        <a href="blog/edit/<%= article.id %>">EDIT</a>
-                        <form action="/blog/<%= article.id %>?_method=delete" method="post" class="d-inline">
-                            <button type="submit">DELETE</button>
-                        </form>
-                    </div>
-                </div>
+                <article class="margin-btm">
+                    <section class="container-component-level1">
+                        <h2><%= article.title %></h2>
+                        <div class="multiple-stuff-div">
+                            <p><%= article.createdAt.toLocaleDateString() %></p>
+                            <a class="b" href=""><%= article.category %></a>
+                        </div>
+                        <div class="description container-component-level2"><%= article.description %></div>
+                        <div class="multiple-btns-div">
+                            <a class="btn blue" href="blog/<%= article.slug %>">Read More</a>
+                            <a class="btn green" href="blog/edit/<%= article.id %>">EDIT</a>
+                            <form action="/blog/<%= article.id %>?_method=delete" method="post" class="d-inline">
+                                <button type="submit" class="btn red">DELETE</button>
+                            </form>
+                        </div>
+                    </section>
+                </article>
             <% }) %>
-        </div>
+        </section>
     </main>
+    <button class="top-btn" id="topBtn" onclick="topFunction()" title="To the top">Top</button>
     <%- include('../components/footer') %>
 </body>
 </html>

@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import articleRouter from "./routers/articleRouter";
 import aboutRouter from "./routers/aboutRouter";
 import contactRouter from "./routers/contactRouter";
+import faqRouter from "./routers/faqRouter";
 import userRouter from "./routers/userRouter";
 import Article from "./models/articleModel";
 import methodOverride from "method-override";
@@ -33,6 +34,8 @@ app.use(mongoSanitize());
 app.use('/blog', articleRouter);
 app.use('/about', aboutRouter);
 app.use('/contact', contactRouter);
+app.use('/faq', faqRouter);
+
 app.use('/users', userRouter);
 
 //render has to match the folder structure for get method
