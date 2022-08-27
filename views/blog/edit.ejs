@@ -27,8 +27,8 @@
     <%- include('../components/header') %>
     <main>
         <div class="myContainer">
-            <h1>New Article</h1>
-            <form action="/articles" method="post">
+            <h1>Edit Article</h1>
+            <form action="/blog/<%= article.id %>?_method=put" method="post">
                 <%- include('../components/formFields') %>
             </form>
         </div>

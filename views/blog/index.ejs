@@ -27,16 +27,16 @@
     <main>
         <div class="myContainer">
             <h1>Articles</h1>
-            <a href="/articles/new">CREATE NEW</a>
+            <a href="/blog/new">CREATE NEW</a>
             <% articles.forEach(article => { %>
                 <div class="card mt-4">
                     <div class="card-body">
                         <h2 class="card-title"><%= article.title %></h2>
                         <div><%= article.createdAt.toLocaleDateString() %></div>
                         <div class="card-text"><%= article.description %></div>
-                        <a href="articles/<%= article.slug %>">Read More</a>
-                        <a href="/articles/edit/<%= article.id %>">EDIT</a>
-                        <form action="/articles/<%= article.id %>?_method=delete" method="post" class="d-inline">
+                        <a href="blog/<%= article.slug %>">Read More</a>
+                        <a href="blog/edit/<%= article.id %>">EDIT</a>
+                        <form action="/blog/<%= article.id %>?_method=delete" method="post" class="d-inline">
                             <button type="submit">DELETE</button>
                         </form>
                     </div>

@@ -30,7 +30,7 @@ app.use(methodOverride('_method'));
 app.use(mongoSanitize());
 
 //gives the pages a url to be routed to
-app.use('/articles', articleRouter);
+app.use('/blog', articleRouter);
 app.use('/about', aboutRouter);
 app.use('/contact', contactRouter);
 app.use('/users', userRouter);
@@ -39,7 +39,7 @@ app.use('/users', userRouter);
 app.get('/', async (req, res) => {
     const articles = await Article.find().sort(
         { createdAt: 'descending'});
-    res.render('articles/index', { articles: articles})
+    res.render('blog/index', { articles: articles})
 });
 
 app.get('/about', (req, res) => {

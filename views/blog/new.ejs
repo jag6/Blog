@@ -27,11 +27,10 @@
     <%- include('../components/header') %>
     <main>
         <div class="myContainer">
-            <h1><%= article.title %></h1>
-            <div><%= article.createdAt.toLocaleDateString() %></div>
-            <a href="/">All Articles</a>
-            <a href="/articles/edit/<%= article.id %>">EDIT</a>
-            <div><%- article.sanitizedHtml %></div>
+            <h1>New Article</h1>
+            <form action="/blog" method="post">
+                <%- include('../components/formFields') %>
+            </form>
         </div>
     </main>
     <%- include('../components/footer') %>
