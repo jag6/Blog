@@ -1,13 +1,13 @@
 import express from "express";
 import mongoose from "mongoose";
+import methodOverride from "method-override";
+import mongoSanitize from "express-mongo-sanitize";
 import articleRouter from "./routers/articleRouter";
 import aboutRouter from "./routers/aboutRouter";
 import contactRouter from "./routers/contactRouter";
 import faqRouter from "./routers/faqRouter";
 import userRouter from "./routers/userRouter";
 import Article from "./models/articleModel";
-import methodOverride from "method-override";
-import mongoSanitize from "express-mongo-sanitize";
 
 mongoose.connect('mongodb://localhost/blog', 
     {   useNewUrlParser: true,
@@ -44,16 +44,17 @@ app.get('/', async (req, res) => {
         { createdAt: 'descending'});
     res.render('blog/index', { articles: articles})
 });
-
 app.get('/about', (req, res) => {
     res.render('pages/about')
 });
-
 app.get('/contact', (req, res) => {
     res.render('pages/contact')
+});
+app.get('/faq', (req,res) => {
+    res.render('pages/faq')
 });
 
 const port = 5000;
 app.listen(port, () => {
-    console.log(`serving at localhost:${port}`)
+    console.log(`http://localhost:${port}`)
 });
