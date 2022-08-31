@@ -4,7 +4,7 @@ const scrollFunction = () => {
   window.addEventListener('scroll', () => {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
       topBtn.style.display = "flex";
-    } else {
+    }else {
       topBtn.style.display = "none";
     }
   });

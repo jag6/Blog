@@ -194,6 +194,7 @@ header {
 
 .myContainer {
     padding: 0 5%;
+    margin-bottom: 3rem;
 }
 
 .multiple-stuff-div, .multiple-btns-div {

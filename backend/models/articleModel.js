@@ -23,35 +23,11 @@ const articleSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    pageTitle: {
-        type: String,
-        required: true,
-    },
-    pageDescription: {
-        type: String,
-        required: true,
-    },
     author: {
         type: String,
         required: true,
     },
-    twitterTitle: {
-        type: String,
-        required: true,
-    },
-    twitterDescription: {
-        type: String,
-        required: true,
-    },
-    ogTitle: {
-        type: String,
-        required: true,
-    },
-    ogDescription: {
-        type: String,
-        required: true,
-    },
-    ogUrl: {
+    url: {
         type: String,
         required: true,
     },
