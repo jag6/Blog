@@ -46,14 +46,7 @@ function saveArticleAndRedirect(path) {
         article.category = req.body.category
         article.description = req.body.description
         article.markdown = req.body.markdown
-        article.pageTitle = req.body.pageTitle
-        article.pageDescription = req.body.pageDescription
         article.author = req.body.author
-        article.twitterTitle = req.body.twitterTitle
-        article.twitterDescription = req.body.twitterDescription
-        article.ogTitle = req.body.ogTitle
-        article.ogDescription = req.body.ogDescription
-        article.ogUrl = req.body.ogUrl
         try {
             article = await article.save();
             res.redirect(`/blog/${article.slug}`)
