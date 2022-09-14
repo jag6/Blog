@@ -4,17 +4,23 @@
 <body>
     <%- include('../components/header') %>
     <main>
-        <section class="myContainer">
-            <section class="top"><h1><%= article.title %></h1></section>
-            <div class="multiple-stuff-div">
-                <p><%= article.createdAt.toLocaleDateString() %></p>
-                <a class="b" href=""><%= article.category %></a>
-            </div>
-            <div class="multiple-btns-div">
-                <a class="btn blue" href="/">All Articles</a>
-                <a class="btn green"href="edit/<%= article.id %>">EDIT</a>
-            </div>
-            <div><%- article.sanitizedHtml %></div>
+        <section class="myContainer light-gray">
+            <article class="article">
+                <section>
+                    <h1><%= article.title %></h1>
+                </section>
+                <div class="multiple-stuff-div">
+                    <p><%= article.createdAt.toLocaleDateString() %></p>
+                    <a class="b" href=""><%= article.category %></a>
+                </div>
+                <div class="multiple-btns-div margin-top-1 margin-btm-2">
+                    <a class="btn blue" href="/">All Articles</a>
+                    <a class="btn green"href="edit/<%= article.id %>">EDIT</a>
+                </div>
+                <section class="article-body">
+                    <%- article.sanitizedHtml %>
+                </section>
+            </article>
         </section>
     </main>
     <%- include('../components/topButton') %>

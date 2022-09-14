@@ -1,18 +1,40 @@
-<header class="b">
-    <div class="logo">
-        <a href="/"><img src="/images/blog-logo.svg" alt="blog logo"></a>
-    </div>
-    <div>
-        <nav class="nav">
-            <ul>
-                <li><a href="/">HOME</a></li>
-                <li><a href="/about">ABOUT</a></li>
-                <li><a href="/contact">CONTACT</a></li>
-                <li><a href="/faq">FAQ</a></li>
-            </ul>
-        </nav>
-    </div>
-    <div class="dark-mode">
-        <img src="/images/dark-mode.svg" alt="blog logo">
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <a href="/"><img src="/images/blog-logo.svg" alt="blog logo"></a>
+        </div>
+        <div>
+            <nav class="nav">
+                <div>
+                    <ul>
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="/about">ABOUT</a></li>
+                        <li><a href="/contact">CONTACT</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><a href="/login">LOGIN</a></li>
+                        <li><a href="/register">REGISTER</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div>
+            <button type="button" class="theme-icon">
+                <i
+                  aria-hidden="true"
+                  class="fa fa-moon-o"
+                  title="Toggle between dark and light mode"
+                ></i>
+                <i
+                  aria-hidden="true"
+                  class="fa fa-sun-o"
+                  title="Toggle between dark and light mode"
+                ></i>
+                <span class="sr-only">Toggle between dark and light mode</span>
+            </button>
+        </div>
     </div>
 </header>
