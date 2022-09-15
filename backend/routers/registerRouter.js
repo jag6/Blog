@@ -7,11 +7,11 @@ import config from "../config";
 const registerRouter = express.Router()
 
 //create admin user
-registerRouter.get('/createadmim', asyncHandler(async (req, res) => {
+registerRouter.get('/createadmin', asyncHandler(async (req, res) => {
     try {
         const user = new User({
             first_name: 'Matt',
-            last_name: 'C',
+            last_name: 'Cor',
             email: 'matt@matt.com',
             password: config.ADMIN_PW,
             isAdmin: true
@@ -24,9 +24,9 @@ registerRouter.get('/createadmim', asyncHandler(async (req, res) => {
 }));
 
 //register user
-registerRouter.post('/register', asyncHandler(async (req, res) => {
+registerRouter.post('/', asyncHandler(async (req, res) => {
     const user = new User({
-        first_name: req.body.name,
+        first_name: req.body.first_name,
         last_name: req.body.last_name,
         email: req.body.email,
         password: req.body.password
@@ -45,6 +45,7 @@ registerRouter.post('/register', asyncHandler(async (req, res) => {
                 isAdmin: createdUser.isAdmin,
                 token: generateToken(createdUser)
             });
+            res.redirect(200, '/');
         }
     }
 ));

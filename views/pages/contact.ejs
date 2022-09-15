@@ -26,7 +26,18 @@
             <section class="top">
                 <h1>CONTACT ME</h1>
             </section>
-            
+            <% users.forEach(user => { %>
+               
+                <h2><%= user.first_name %></h2>
+                <h2><%= user.last_name %></h2>
+                
+                <form action="/contact/<%= user.id %>?_method=delete" method="post" class="d-inline">
+                    <button type="submit" class="btn red">DELETE</button>
+                </form>
+                        
+                    
+                
+            <% }) %>
         </section>
     </main>
     <%- include('../components/footer') %>

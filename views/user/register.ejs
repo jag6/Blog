@@ -26,18 +26,18 @@
     <%- include('../components/header') %>
     <main>
         <section class="myContainer margin-btm-3">
-            <form id="register-form" class="form-group user-form">
+            <form id="register-form" class="form-group user-form" action="/register" method="post">
                 <section class="top">
                     <h1>Register</h1>
                 </section>
                 <div class="form-field">
-                    <label for="first-name">First Name</label>
-                    <input type="text" name="first-name" id="first-name" required>
+                    <label for="first_name">First Name</label>
+                    <input type="text" name="first_name" id="first_name" required>
                     <small></small>
                 </div>
                 <div class="form-field">
-                    <label for="last-name">Last Name</label>
-                    <input type="text" name="last-name" id="last-name" required>
+                    <label for="last_name">Last Name</label>
+                    <input type="text" name="last_name" id="last_name" required>
                     <small></small>
                 </div>
                 <div class="form-field">

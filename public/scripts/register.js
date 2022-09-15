@@ -1,4 +1,5 @@
-const nameEl = document.getElementById("name");
+const firstNameEl = document.getElementById("first_name");
+const lastNameEl = document.getElementById("last_name");
 const emailEl = document.getElementById("email");
 const passwordEl = document.getElementById("password");
 const confirmPasswordEl = document.getElementById("re-enter-password");
@@ -7,13 +8,13 @@ const checkFirstName = () => {
     let valid = false;
     const min = 3,
     max = 25;
-    const name = nameEl.value.trim();
+    const name = firstNameEl.value.trim();
     if(!isRequired(name)) {
-        showError(nameEl, 'Sorry, Name cannot be blank.');
+        showError(firstNameEl, 'Sorry, Name cannot be blank.');
     }else if (!isBetween(name.length, min, max)) {
-        showError(nameEl, `Sorry, Name must be between ${min} and ${max} characters.`)
+        showError(firstNameEl, `Sorry, Name must be between ${min} and ${max} characters.`)
     }else {
-        showSuccess(nameEl);
+        showSuccess(firstNameEl);
         valid = true;
     }
     return valid;
@@ -23,13 +24,13 @@ const checkLastName = () => {
     let valid = false;
     const min = 3,
     max = 25;
-    const name = nameEl.value.trim();
+    const name = lastNameEl.value.trim();
     if(!isRequired(name)) {
-        showError(nameEl, 'Sorry, Name cannot be blank.');
+        showError(lastNameEl, 'Sorry, Name cannot be blank.');
     }else if (!isBetween(name.length, min, max)) {
-        showError(nameEl, `Sorry, Name must be between ${min} and ${max} characters.`)
+        showError(lastNameEl, `Sorry, Name must be between ${min} and ${max} characters.`)
     }else {
-        showSuccess(nameEl);
+        showSuccess(lastNameEl);
         valid = true;
     }
     return valid;

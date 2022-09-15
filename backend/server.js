@@ -8,6 +8,8 @@ import pageRouter from "./routers/pageRouter";
 import registerRouter from "./routers/registerRouter";
 import loginRouter from "./routers/loginRouter";
 import Article from "./models/articleModel";
+import User from "./models/userModel";
+import contactRouter from "./routers/contactRouter";
 
 
 mongoose.connect(config.MONGODB_URL, 
@@ -39,7 +41,7 @@ app.use((err, req, res, next) => {
 //gives the pages a url to be routed to
 app.use('/blog', articleRouter);
 app.use('/about', pageRouter);
-app.use('/contact', pageRouter);
+app.use('/contact', contactRouter);
 app.use('/faq', pageRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
@@ -53,8 +55,9 @@ app.get('/', async (req, res) => {
 app.get('/about', (req, res) => {
     res.render('pages/about')
 });
-app.get('/contact', (req, res) => {
-    res.render('pages/contact')
+app.get('/contact', async (req, res) => {
+    const users = await User.find();
+    res.render('pages/contact', { users: users })
 });
 app.get('/faq', (req,res) => {
     res.render('pages/faq')
