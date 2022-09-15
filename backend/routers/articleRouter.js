@@ -1,15 +1,16 @@
 import express from "express";
 import Article from "../models/articleModel";
+import { isAuth, isAdmin } from "../utils";
 
 const articleRouter = express.Router();
 
 //creates new blog article page
-articleRouter.get('/new', (req, res) => {
+articleRouter.get('/new', isAuth, isAdmin, (req, res) => {
     res.render('blog/new', { article: new Article() })
 });
 
 //goes to edit blog article
-articleRouter.get('/edit/:id', async (req, res) => {
+articleRouter.get('/edit/:id', isAuth, isAdmin, async (req, res) => {
     const article = await Article.findByIdAndUpdate(req.params.id)
     res.render('blog/edit', { article: article })
 });
@@ -22,19 +23,19 @@ articleRouter.get('/:slug', async (req, res) => {
 });
 
 //saves blog article
-articleRouter.post('/', async (req, res, next) => {
+articleRouter.post('/', isAuth, isAdmin, async (req, res, next) => {
     req.article = new Article();
     next();
 }, saveArticleAndRedirect('new'));
 
 //edits blog article
-articleRouter.put('/:id', async (req, res, next) => {
+articleRouter.put('/:id', isAuth, isAdmin, async (req, res, next) => {
     req.article = await Article.findById(req.params.id);
     next();
 }, saveArticleAndRedirect('edit'));
 
 //deletes blog article
-articleRouter.delete('/:id', async (req, res) => {
+articleRouter.delete('/:id', isAuth, isAdmin, async (req, res) => {
     await Article.findByIdAndDelete(req.params.id)
     res.redirect('/')
 });

@@ -3,7 +3,23 @@ const emailEl = document.getElementById("email");
 const passwordEl = document.getElementById("password");
 const confirmPasswordEl = document.getElementById("re-enter-password");
 
-const checkName = () => {
+const checkFirstName = () => {
+    let valid = false;
+    const min = 3,
+    max = 25;
+    const name = nameEl.value.trim();
+    if(!isRequired(name)) {
+        showError(nameEl, 'Sorry, Name cannot be blank.');
+    }else if (!isBetween(name.length, min, max)) {
+        showError(nameEl, `Sorry, Name must be between ${min} and ${max} characters.`)
+    }else {
+        showSuccess(nameEl);
+        valid = true;
+    }
+    return valid;
+};
+
+const checkLastName = () => {
     let valid = false;
     const min = 3,
     max = 25;
@@ -96,37 +112,6 @@ const showSuccess = (input) => {
     error.textContent = '';
 }
 
-const submitRegister = () => {
-    document.getElementById("register-form").addEventListener('submit', async (e) => {
-        e.preventDefault();
-        let isNameValid = checkName(),
-            isEmailValid = checkEmail(),
-            isPasswordValid = checkPassword(),
-            isConfirmPasswordValid = checkConfirmPassword();
-    
-        let isFormValid = isNameValid &&
-            isEmailValid &&
-            isPasswordValid &&
-            isConfirmPasswordValid;
-    
-        if(isFormValid) {
-            showLoading();
-            const data = await register({
-                name: document.getElementById("name").value,
-                email: document.getElementById("email").value,
-                password: document.getElementById("password").value
-            });
-            hideLoading();
-            if(data.error) {
-                showMessage(data.error);
-            }else {
-                setUserInfo(data);
-                redirectUser();
-            }
-        }
-    })
-}
-
 const debounce = (fn, delay = 500) => {
     let timeoutId;
     return (...args) => {
@@ -144,8 +129,11 @@ const debounce = (fn, delay = 500) => {
 const checkEverything = () => {
     document.getElementById("register-form").addEventListener('input', debounce(function (e) {
         switch (e.target.id) {
-            case 'name':
-                checkName();
+            case 'first_name':
+                checkFirstName();
+                break;
+            case 'last_name':
+                checkLastName();
                 break;
             case 'email':
                 checkEmail();
@@ -160,4 +148,4 @@ const checkEverything = () => {
     })
 )}
 
-submitRegister(), checkEverything();
+checkEverything();
