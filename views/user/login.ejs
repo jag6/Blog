@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('../components/css.ejs') %>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="article"/>
+    <!-- Page Data -->
+    <title>Login</title>
+    <meta name="description" content="Please login">
+    <!-- Twitter MetaData -->
+    <meta name="twitter:title" content="Login">
+    <meta name="twitter:description" content="Please login">
+    <meta name="twitter:image" content="">
+    <!-- Other Social Media MetaData -->
+    <meta property="og:title" content="Login">
+    <meta property="og:description" content="Please login">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+    <script src="/scripts/login.js" defer></script>
+    <%- include ('../components/scripts.ejs') %>
+</head>
+<body>
+    <%- include('../components/header') %>
+    <main>
+        <section class="myContainer margin-btm-3">
+            <form id="login" class="form-group user-form">
+                <section class="top">
+                    <h1>Login</h1>
+                </section>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">   
+                <button type="submit" class="primary">SUBMIT</button>    
+                <div class="user-form-btm">
+                    <p>New User?<p>
+                    <a href="/register">Create your account</a>
+                </div>
+            </form>
+            
+        </section>
+    </main>
+    <%- include('../components/footer') %>
+</body>
+</html>

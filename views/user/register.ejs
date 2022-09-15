@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('../components/css.ejs') %>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="article"/>
+    <!-- Page Data -->
+    <title>Register</title>
+    <meta name="description" content="Register here for a new account">
+    <!-- Twitter MetaData -->
+    <meta name="twitter:title" content="Register">
+    <meta name="twitter:description" content="Register here for a new account">
+    <meta name="twitter:image" content="">
+    <!-- Other Social Media MetaData -->
+    <meta property="og:title" content="Register">
+    <meta property="og:description" content="Register here for a new account">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+    <%- include ('../components/scripts.ejs') %>
+    <script src="/scripts/register.js" defer></script>
+</head>
+<body>
+    <%- include('../components/header') %>
+    <main>
+        <section class="myContainer margin-btm-3">
+            <form id="register-form" class="form-group user-form">
+                <section class="top">
+                    <h1>Register</h1>
+                </section>
+                <div class="form-field">
+                    <label for="first-name">First Name</label>
+                    <input type="text" name="first-name" id="first-name" required>
+                    <small></small>
+                </div>
+                <div class="form-field">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" name="last-name" id="last-name" required>
+                    <small></small>
+                </div>
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" required>
+                    <small></small>
+                </div>
+                <div class="form-field">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required>   
+                    <small></small> 
+                </div>
+                <div class="form-field">
+                    <label for="re-enter-password">Re-enter Password</label>
+                    <input type="password" name="re-enter-password" id="re-enter-password" required> 
+                    <small></small>
+                </div>
+                <button type="submit" class="primary">REGISTER</button>    
+                <div class="user-form-btm">
+                    <p>Already have an account?<p>
+                    <a href="/login">Sign In</a>
+                </div>
+            </form>
+            
+        </section>
+    </main>
+    <%- include('../components/footer') %>
+</body>
+</html>
