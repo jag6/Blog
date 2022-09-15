@@ -186,6 +186,10 @@ header {
 
 /*CLASSES*/
 
+.flex {
+    display: flex;
+}
+
 .btn {
     padding: .5rem 1rem;
     border-radius: 10px;
@@ -228,6 +232,7 @@ header {
 .myContainer {
     width: 100%;
 }
+
 
 /*HOME*/
 

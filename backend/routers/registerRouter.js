@@ -2,6 +2,7 @@ import express from "express";
 import asyncHandler from "express-async-handler";
 import User from "../models/userModel";
 import { generateToken } from "../utils";
+import config from "../config";
 
 const registerRouter = express.Router()
 
@@ -12,7 +13,7 @@ registerRouter.get('/createadmim', asyncHandler(async (req, res) => {
             first_name: 'Matt',
             last_name: 'C',
             email: 'matt@matt.com',
-            password: '123456abCDE!',
+            password: config.ADMIN_PW,
             isAdmin: true
         });
         const createdUser = await user.save();
@@ -52,7 +53,5 @@ registerRouter.post('/register', asyncHandler(async (req, res) => {
 registerRouter.get('/register', (req, res) => {
     res.render('user/register')
 });
-
-
 
 export default registerRouter;

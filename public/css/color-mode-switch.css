@@ -7,7 +7,7 @@
     --component3-color: #8D8D99;
     --article-color: #4A4A4F;
     --input-color: #f3f3f3;
-    --font-color: #fff;
+    --font-color: #f3f3f3;
     --search: #8D8D99;
     --blue: #1A95C9;
     --green: #19BF67;
@@ -46,11 +46,14 @@ header {
 
 body {
     background-color: var(--background-color);
-    color: var(--font-color);
 }
 
 footer {
     background-color: var(--footer-color);
+}
+
+main {
+    color: var(--font-color);
 }
 
 main a, button {
@@ -90,6 +93,10 @@ input {
 
 .user-form div a:hover {
     background-color: var(--green);
+}
+
+.top div a {
+    background-color: var(--blue);
 }
 
 .blue {
