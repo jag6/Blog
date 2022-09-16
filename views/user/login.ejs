@@ -19,11 +19,12 @@
     <meta property="og:description" content="Please login">
     <meta property="og:image" content="">
     <meta property="og:url" content="">
-    <script src="/scripts/login.js" defer></script>
     <%- include ('../components/scripts.ejs') %>
+    <script src="/scripts/login.js" defer></script>
 </head>
 <body>
     <%- include('../components/header') %>
+    <div class="overlay" id="message-overlay"></div>
     <main>
         <section class="myContainer margin-btm-3">
             <form id="login" class="form-group user-form" action="/login" method="post">

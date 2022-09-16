@@ -277,12 +277,14 @@ header {
     line-height: 40px;
     border: none;
     cursor: pointer;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
 }
   
 .search-container button:hover {
-    background: #ccc;
+    background: #aaa;
 }
 
 .home-container {

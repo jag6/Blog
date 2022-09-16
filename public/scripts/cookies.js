@@ -1,4 +1,4 @@
-export const setUserInfo = (
+const setUserInfo = (
     {
         _id = '',
         first_name = '',
@@ -21,11 +21,11 @@ export const setUserInfo = (
     );
 };
 
-export const clearUser = () => {
+const clearUser = () => {
     localStorage.removeItem('userInfo');
 };
 
-export const getUserInfo = () => {
+const getUserInfo = () => {
     return localStorage.getItem('userInfo')
     ? JSON.parse(localStorage.getItem('userInfo'))
     : {

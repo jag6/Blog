@@ -1,14 +1,33 @@
-import { hideLoading, showMessage, redirectUser } from '/src/config';
+const loggingIn = async ({ email, password }) => {
+    try {
+        const response = ({
+            url: `${apiUrl}/api/users/login`,
+            method: 'POST',
+            header: {
+                'Content-Type': 'application/json'
+            },
+            data: {
+                email,
+                password
+            }
+        })
+        if(response.statusText !== 'OK') {
+            throw new Error(response.data.message);
+        }
+        return response.data;
+    }catch (err) {
+        console.log(err);
+        return { error: err.response.data.message || err.message };
+    }
+};
 
 const login = () => {
-    document.getElementById("signin-form").addEventListener("submit", async (e) => {
+    document.getElementById("login-form").addEventListener("submit", async (e) => {
         e.preventDefault();
-        showLoading();
-        const data = await signin({
+        const data = await loggingIn({
             email: document.getElementById('email').value,
             password: document.getElementById('password').value
         });
-        hideLoading();
         if (data.error) {
             showMessage(data.error);
         }else {
@@ -18,4 +37,4 @@ const login = () => {
     });
 }
 
-login();
+loggingIn(), login();

@@ -149,4 +149,62 @@ const checkEverything = () => {
     })
 )}
 
-checkEverything();
+const register = async ({ first_name, last_name, email, password }) => {
+    try {
+        const response = ({
+            url: `${apiUrl}/api/users/register`,
+            method: 'POST',
+            header: {
+                'Content-Type': 'application/json'
+            },
+            data: {
+                first_name,
+                last_name,
+                email,
+                password
+            }
+        })
+        if(response.statusText !== 'OK') {
+            throw new Error(response.data.message);
+        }
+        return response.data;
+    }catch (err) {
+        console.log(err);
+        return { error: err.response.data.message || err.message };
+    }
+};
+
+const submitRegister = () => {
+    document.getElementById("register-form").addEventListener('submit', async (e) => {
+        e.preventDefault();
+        let isFirstNameValid = checkFirstName(),
+            isLastNameValid = checkLastName(),
+            isEmailValid = checkEmail(),
+            isPasswordValid = checkPassword(),
+            isConfirmPasswordValid = checkConfirmPassword();
+    
+        let isFormValid = 
+            isFirstNameValid &&
+            isLastNameValid &&
+            isEmailValid &&
+            isPasswordValid &&
+            isConfirmPasswordValid;
+    
+        if(isFormValid) {
+            const data = await register({
+                first_name: document.getElementById("first_name").value,
+                last_name: document.getElementById("last_name").value,
+                email: document.getElementById("email").value,
+                password: document.getElementById("password").value
+            });
+            if(data.error) {
+                showMessage(data.error);
+            }else {
+                setUserInfo(data);
+                redirectUser();
+            }
+        }
+    })
+}
+
+checkEverything(), submitRegister();
