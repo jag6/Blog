@@ -10,9 +10,9 @@ const checkFirstName = () => {
     max = 25;
     const name = firstNameEl.value.trim();
     if(!isRequired(name)) {
-        showError(firstNameEl, 'Sorry, Name cannot be blank.');
+        showError(firstNameEl, 'Sorry, first name cannot be blank.');
     }else if (!isBetween(name.length, min, max)) {
-        showError(firstNameEl, `Sorry, Name must be between ${min} and ${max} characters.`)
+        showError(firstNameEl, `Sorry, first name must be between ${min} and ${max} characters.`)
     }else {
         showSuccess(firstNameEl);
         valid = true;
@@ -26,9 +26,9 @@ const checkLastName = () => {
     max = 25;
     const name = lastNameEl.value.trim();
     if(!isRequired(name)) {
-        showError(lastNameEl, 'Sorry, Name cannot be blank.');
+        showError(lastNameEl, 'Sorry, last name cannot be blank.');
     }else if (!isBetween(name.length, min, max)) {
-        showError(lastNameEl, `Sorry, Name must be between ${min} and ${max} characters.`)
+        showError(lastNameEl, `Sorry, last name must be between ${min} and ${max} characters.`)
     }else {
         showSuccess(lastNameEl);
         valid = true;
@@ -40,9 +40,9 @@ const checkEmail = () => {
     let valid = false;
     const email = emailEl.value.trim();
     if(!isRequired(email)) {
-        showError(emailEl, 'Sorry, Email cannot be blank');
+        showError(emailEl, 'Sorry, email cannot be blank');
     }else if (!isEmailValid(email)) {
-        showError(emailEl, 'Sorry, Email is not valid')
+        showError(emailEl, 'Sorry, email is not valid')
     }else {
         showSuccess(emailEl);
         valid = true;
@@ -54,9 +54,9 @@ const checkPassword = () => {
     let valid = false;
     const password = passwordEl.value.trim();
     if(!isRequired(password)) {
-        showError(passwordEl, 'Sorry, Password cannot be blank');
+        showError(passwordEl, 'Sorry, password cannot be blank');
     }else if (!isPasswordSecure(password)) {
-        showError(passwordEl, 'Sorry, Password must have at least 8 characters that include at least 1 lowercase character, 1 uppercase character, 1 number, and 1 special character in (!@#$%^&*)');
+        showError(passwordEl, 'Sorry, password must have at least 8 characters that include at least 1 lowercase character, 1 uppercase character, 1 number, and 1 special character in (!@#$%^&*)');
     }else {
         showSuccess(passwordEl);
         valid = true;
@@ -69,7 +69,7 @@ const checkConfirmPassword = () => {
     const confirmPassword = confirmPasswordEl.value.trim();
     const password = passwordEl.value.trim();
     if(!isRequired(confirmPassword)) {
-        showError(confirmPasswordEl, 'Sorry, Please enter the password again');
+        showError(confirmPasswordEl, 'Sorry, please enter the password again');
     }else if (password !== confirmPassword) {
         showError(confirmPasswordEl, 'Sorry, the password does not match. Please try again');
     }else {

@@ -45,7 +45,6 @@ registerRouter.post('/', asyncHandler(async (req, res) => {
                 isAdmin: createdUser.isAdmin,
                 token: generateToken(createdUser)
             });
-            res.redirect(200, '/');
         }
     }
 ));
