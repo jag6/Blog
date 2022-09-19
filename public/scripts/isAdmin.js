@@ -1,13 +1,4 @@
-const getUserInfo = () => {
-    return localStorage.getItem('userInfo')
-    ? JSON.parse(localStorage.getItem('userInfo'))
-    : {
-        first_name: '',
-        last_name: '', 
-        email: '', 
-        password: ''
-    };
-};
+import { getUserInfo } from "./cookies.js"; 
 
 const { isAdmin } = getUserInfo();
 
@@ -23,13 +14,4 @@ headerRight.innerHTML = `
                 <li><a href="/register">Register</a></li>
             </ul>`
     } 
-`;
-
-const showDashboardBack = document.getElementById('hidden-a');
-showDashboardBack.innerHTML = `
-    ${
-        isAdmin
-        ? `<a class="btn blue" href="/dashboard#to-Dashboard">Back to Dashboard</a>`
-        : `<a class="btn blue" href="/#articles-top">Back to Articles</a>`
-    }
 `;

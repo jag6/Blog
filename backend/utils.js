@@ -11,7 +11,7 @@ export const generateToken = (user) => {
             isAdmin: user.isAdmin
         },
         config.JWT_SECRET
-    )
+    );
 };
 
 export const isAuth = (req, res, next) => {
@@ -27,7 +27,7 @@ export const isAuth = (req, res, next) => {
                 req.user = data;
                 next();
             }
-        })
+        });
     }
 };
 
@@ -35,6 +35,6 @@ export const isAdmin = (req, res, next) => {
     if(req.user && req.user.isAdmin) {
         next();
     }else {
-        res.status(401).send({ message: 'Token not valid for admin user' })
+        res.status(401).send({ message: 'Token not valid for admin user' });
     }
 };

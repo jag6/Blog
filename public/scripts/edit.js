@@ -1,17 +1,5 @@
-const apiUrl = location.href.startsWith('http://localhost') 
-? 'http://localhost:5000'
-: '';
-
-const getUserInfo = () => {
-    return localStorage.getItem('userInfo')
-    ? JSON.parse(localStorage.getItem('userInfo'))
-    : {
-        first_name: '',
-        last_name: '', 
-        email: '', 
-        password: ''
-    };
-};
+import { apiUrl } from "./config.js";
+import { getUserInfo } from "./cookies.js"; 
 
 const editArticle = async (article) => {
     try {
@@ -33,3 +21,5 @@ const editArticle = async (article) => {
         return { error: err.response.data.message || err.message };
     }
 };
+
+editArticle();

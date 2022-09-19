@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import config from "./config";
+import cors from "cors";
 import methodOverride from "method-override";
 import mongoSanitize from "express-mongo-sanitize";
 import articleRouter from "./routers/articleRouter";
@@ -9,7 +10,6 @@ import userRouter from "./routers/userRouter";
 import Article from "./models/articleModel";
 import User from "./models/userModel";
 import contactRouter from "./routers/contactRouter";
-
 
 mongoose.connect(config.MONGODB_URL, 
     {   useNewUrlParser: true,
@@ -24,16 +24,12 @@ const app = express();
 
 app.set("view engine", 'ejs');
 
+app.use(cors());
 app.use(express.static("public")); 
-
 app.use(express.urlencoded({ extended: false }));
-
-app.use(methodOverride('_method'));
-
+app.use(methodOverride('_method')); //allows form to have delete action
 app.use(mongoSanitize());
-
-//read request's body section
-app.use(express.json());
+app.use(express.json()); //read request's body section
 
 //handle errors
 app.use((err, req, res, next) => {
@@ -52,7 +48,7 @@ app.use('/', userRouter);
 app.use('/api/users', userRouter);
 app.use('/api/blog', articleRouter);
 
-//render pages, render has to match the folder structure for get method
+//get pages, render has to match the folder structure
 app.get('/', async (req, res) => {
     const articles = await Article.find().sort(
         { createdAt: 'descending' });
