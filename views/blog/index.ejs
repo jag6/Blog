@@ -27,7 +27,7 @@
         </div>
         <section class="home-container">
             <section class="myContainer">
-                <section class="top home-top-header">
+                <section class="top home-top-header" id="articles-top">
                     <section>
                         <h1>Your Articles</h1>
                     </section>
@@ -54,10 +54,6 @@
                             </div>
                             <div class="multiple-btns-div">
                                 <a class="btn blue" href="blog/<%= article.slug %>">Read More</a>
-                                <a class="btn green" href="blog/edit/<%= article.id %>">EDIT</a>
-                                <form action="/blog/<%= article.id %>?_method=delete" method="post" class="d-inline">
-                                    <button type="submit" class="btn red">DELETE</button>
-                                </form>
                             </div>
                         </section>
                     </article>

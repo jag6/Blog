@@ -149,9 +149,13 @@ const checkEverything = () => {
     })
 )}
 
+const apiUrl = location.href.startsWith('http://localhost') 
+? 'http://localhost:5000'
+: '';
+
 const register = async ({ first_name, last_name, email, password }) => {
     try {
-        const response = ({
+        const response = await axios({
             url: `${apiUrl}/api/users/register`,
             method: 'POST',
             header: {
@@ -170,8 +174,54 @@ const register = async ({ first_name, last_name, email, password }) => {
         return response.data;
     }catch (err) {
         console.log(err);
-        return { error: err.response.data.message || err.message };
+        return {error: err.response.data.message || err.message};
     }
+};
+
+const showMessage = (message, callback) => {
+    document.getElementById('message-overlay').innerHTML =
+    `
+        <div>
+            <div id="message-overlay-content">
+                <p>${message}</p>
+            </div>
+            <button id="message-overlay-close-btn">OK</button>
+        </div>
+    `;
+    document.getElementById('message-overlay').classList.add('active');
+    document.getElementById('message-overlay-close-btn').addEventListener('click', () => {
+        document.getElementById('message-overlay').classList.remove('active');
+        if(callback) {
+            callback();
+        }
+    });
+};
+
+const setUserInfo = (
+    {
+        _id = '',
+        first_name = '',
+        last_name = '',
+        email = '',
+        password = '',
+        token = '',
+        isAdmin = false 
+    }) => 
+    {
+        localStorage.setItem('userInfo', JSON.stringify({
+            _id,
+            first_name,
+            last_name,
+            email,
+            password,
+            token,
+            isAdmin
+        })
+    );
+};
+
+const redirectUser = () => {
+    document.location.hash = '/';
 };
 
 const submitRegister = () => {

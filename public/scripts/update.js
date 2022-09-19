@@ -1,3 +1,18 @@
+const apiUrl = location.href.startsWith('http://localhost') 
+? 'http://localhost:5000'
+: '';
+
+const getUserInfo = () => {
+    return localStorage.getItem('userInfo')
+    ? JSON.parse(localStorage.getItem('userInfo'))
+    : {
+        first_name: '',
+        last_name: '', 
+        email: '', 
+        password: ''
+    };
+};
+
 const update = async ({ first_name, last_name, password }) => {
     try {
         const { _id, token } = getUserInfo();

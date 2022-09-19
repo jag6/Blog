@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('../components/css.ejs') %>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="article"/>
+    <!-- Page Data -->
+    <title>Dashboard</title>
+    <meta name="description" content="Your admin dashboard">
+    <!-- Twitter MetaData -->
+    <meta name="twitter:title" content="Dashboard">
+    <meta name="twitter:description" content="Your admin dashboard">
+    <meta name="twitter:image" content="">
+    <!-- Other Social Media MetaData -->
+    <meta property="og:title" content="Dashboard">
+    <meta property="og:description" content="Your admin dashboard">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+    <%- include ('../components/scripts.ejs') %>
+</head>
+<body>
+    <%- include('../components/header') %>
+    <div class="overlay" id="message-overlay"></div>
+    <main>
+        <section class="myContainer">
+            <section class="top home-top-header" id="to-Dashboard">
+                <section>
+                    <section><h1>Dashboard</h1></section>
+                    <div class="flex">
+                        <a class="btn yellow" href="/blog/new">CREATE NEW</a>
+                    </div>
+                </section>
+                <div class="search-container">
+                    <form action="/action_page.php">
+                        <input type="text" placeholder="Search.." name="search">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            </section>
+            <% articles.forEach(article => { %>
+                <article class="margin-btm-3 article-snippet">
+                    <section class="container-component-level1">
+                        <section>
+                            <h2><%= article.title %></h2>
+                        </section>
+                        <div class="multiple-stuff-div">
+                            <p><%= article.createdAt.toLocaleDateString() %></p>
+                            <a class="b" href=""><%= article.category %></a>
+                        </div>
+                        <div class="description container-component-level2">
+                            <%= article.description %>
+                        </div>
+                        <div class="multiple-btns-div">
+                            <a class="btn blue" href="blog/<%= article.slug %>">Read More</a>
+                            <a class="btn green" href="blog/edit/<%= article.id %>">EDIT</a>
+                            <form action="/blog/<%= article.id %>?_method=delete" method="post" class="d-inline">
+                                <button type="submit" class="btn red">DELETE</button>
+                            </form>
+                        </div>
+                    </section>
+                </article>
+            <% }) %>
+        </section>
+    </main>
+    <%- include('../components/footer') %>
+</body>
+</html>

@@ -1,13 +1,13 @@
 import express from "express";
 import asyncHandler from "express-async-handler";
 import User from "../models/userModel";
-import { generateToken } from "../utils";
 import config from "../config";
+import { generateToken } from "../utils";
 
-const registerRouter = express.Router()
+const userRouter = express.Router();
 
 //create admin user
-registerRouter.get('/createadmin', asyncHandler(async (req, res) => {
+userRouter.get('/createadmin', asyncHandler(async (req, res) => {
     try {
         const user = new User({
             first_name: 'Matt',
@@ -24,7 +24,7 @@ registerRouter.get('/createadmin', asyncHandler(async (req, res) => {
 }));
 
 //register user
-registerRouter.post('/', asyncHandler(async (req, res) => {
+userRouter.post('/register', asyncHandler(async (req, res) => {
     const user = new User({
         first_name: req.body.first_name,
         last_name: req.body.last_name,
@@ -49,9 +49,27 @@ registerRouter.post('/', asyncHandler(async (req, res) => {
     }
 ));
 
-//get register page
-registerRouter.get('/register', (req, res) => {
-    res.render('user/register')
-});
+//login user
+userRouter.post('/login', asyncHandler(async (req, res) => {
+    const loginUser = await User.findOne({
+        email: req.body.email,
+        password: req.body.password
+    });
+    if(!loginUser) {
+        res.status(401).send({
+            message: 'Invalid Email or Password'
+        });
+    }else {
+        res.send({
+            _id: loginUser._id,
+            first_name: loginUser.first_name,
+            last_name: loginUser.last_name,
+            email: loginUser.email,
+            isAdmin: loginUser.isAdmin,
+            token: generateToken(loginUser)
+        });
+        res.redirect('/dashboard');
+    }
+}));
 
-export default registerRouter;
+export default userRouter;

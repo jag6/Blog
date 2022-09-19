@@ -30,6 +30,8 @@
                
                 <h2><%= user.first_name %></h2>
                 <h2><%= user.last_name %></h2>
+                <h3><%= user.isAdmin %></h3>
+                <h4><%= user.password %></h4>
                 
                 <form action="/contact/<%= user.id %>?_method=delete" method="post" class="d-inline">
                     <button type="submit" class="btn red">DELETE</button>
