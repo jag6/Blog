@@ -78,6 +78,7 @@ const login = () => {
             showMessage(data.error);
         }else {
             setUserInfo(data);
+            location.href ='/dashboard';
         }
     });
 }

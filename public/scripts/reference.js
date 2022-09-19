@@ -21,10 +21,6 @@ const setUserInfo = (
     );
 };
 
-const clearUser = () => {
-    localStorage.removeItem('userInfo');
-};
-
 const getUserInfo = () => {
     return localStorage.getItem('userInfo')
     ? JSON.parse(localStorage.getItem('userInfo'))
@@ -55,8 +51,4 @@ const showMessage = (message, callback) => {
             callback();
         }
     });
-};
-
-const redirectUser = () => {
-    document.location.hash = '/';
 };

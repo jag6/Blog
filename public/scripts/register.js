@@ -220,10 +220,6 @@ const setUserInfo = (
     );
 };
 
-const redirectUser = () => {
-    document.location.hash = '/';
-};
-
 const submitRegister = () => {
     document.getElementById("register-form").addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -251,7 +247,7 @@ const submitRegister = () => {
                 showMessage(data.error);
             }else {
                 setUserInfo(data);
-                redirectUser();
+                location.href = '/';
             }
         }
     })

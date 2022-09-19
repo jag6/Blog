@@ -20,21 +20,26 @@
     <meta property="og:image" content="">
     <meta property="og:url" content="">
     <%- include ('../components/scripts.ejs') %>
+    <script src="/scripts/logout.js" defer></script>
 </head>
 <body>
     <%- include('../components/header') %>
     <div class="overlay" id="message-overlay"></div>
     <main>
         <section class="myContainer">
+            <section class="top home-top-header">
+                <section><h1>Dashboard</h1></section>
+                <div class="flex profile-btns">
+                    <a class="btn" href="/profile">Profile</a>
+                    <button class="btn" id="logout">Logout</button>
+                </div>
+            </section>
             <section class="top home-top-header" id="to-Dashboard">
-                <section>
-                    <section><h1>Dashboard</h1></section>
-                    <div class="flex">
-                        <a class="btn yellow" href="/blog/new">CREATE NEW</a>
-                    </div>
-                </section>
+                <div class="flex">
+                    <a class="btn yellow" href="/blog/new">CREATE NEW</a>
+                </div>
                 <div class="search-container">
-                    <form action="/action_page.php">
+                    <form action="">
                         <input type="text" placeholder="Search.." name="search">
                         <button type="submit"><i class="fa fa-search"></i></button>
                     </form>

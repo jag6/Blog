@@ -41,6 +41,10 @@ body {
     font-family: 'Raleway', serif;
 }
 
+body button {
+    font-family: 'Raleway', serif;
+}
+
 main {
     padding-bottom: 64px;
     max-width: 1000px;
@@ -248,8 +252,7 @@ header {
     background-color: #E3E3E8;
     padding: 1rem 5% 1rem 3%;
     align-items: center;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-radius: 10px;
 }
 
 .search-container {
@@ -583,4 +586,17 @@ header {
 
 .error {
     color: var(--red);
+}
+
+/*DASHBOARD*/
+
+.profile-btns a, .profile-btns button {
+    font-weight: 700;
+    border: 2px solid transparent;
+}
+
+.profile-btns a:hover, .profile-btns button:hover {
+    border: 2px solid #000;
+    transition: border .5s;
+    opacity: 1;
 }

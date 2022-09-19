@@ -10,7 +10,7 @@ articleRouter.get('/new', isAuth, isAdmin, (req, res) => {
 });
 
 //goes to edit blog article
-articleRouter.get('/edit/:id', isAuth, isAdmin, async (req, res) => {
+articleRouter.get('/edit/:id', async (req, res) => {
     const article = await Article.findByIdAndUpdate(req.params.id)
     res.render('blog/edit', { article: article })
 });

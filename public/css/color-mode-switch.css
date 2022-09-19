@@ -13,6 +13,7 @@
     --green: #19BF67;
     --red:  #FC082C;
     --yellow: #D6CC11;
+    --purple: #BD2EC9;
     --border: 4px solid #0c0c0d;
     --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
@@ -33,6 +34,7 @@
     --green: #0F733E;
     --red:  #B00520;
     --yellow: #C9C110;
+    --purple: #741D7D;
     --box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048),
     0 12.5px 10px rgba(0, 0, 0, 0.06),
@@ -111,6 +113,10 @@ input {
 
 .yellow {
     background-color: var(--yellow);
+}
+
+.purple {
+    background-color: var(--purple);
 }
 
 .icon-bar ul li a {

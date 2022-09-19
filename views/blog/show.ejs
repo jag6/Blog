@@ -13,9 +13,7 @@
                     <p><%= article.createdAt.toLocaleDateString() %></p>
                     <a class="b" href=""><%= article.category %></a>
                 </div>
-                <div class="multiple-btns-div margin-top-1 margin-btm-2" id="hidden-a">
-                    <a class="btn blue" href="/#articles-top">Back to Articles</a>
-                </div>
+                <div class="multiple-btns-div margin-top-1 margin-btm-2" id="hidden-a"></div>
                 <section class="article-body">
                     <%- article.sanitizedHtml %>
                 </section>
