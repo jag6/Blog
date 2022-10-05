@@ -56,20 +56,19 @@ userRouter.post('/register', asyncHandler(async (req, res) => {
     const createdUser = await user.save();
     if(!createdUser) {
         res.status(401).send({
-                message: 'Invalid User Data'
-            });
-        }else {
-            res.send({
-                _id: createdUser._id,
-                first_name: createdUser.first_name,
-                last_name: createdUser.last_name,
-                email: createdUser.email,
-                isAdmin: createdUser.isAdmin,
-                token: generateToken(createdUser)
-            });
-        }
+            message: 'Invalid User Data'
+        });
+    }else {
+        res.send({
+            _id: createdUser._id,
+            first_name: createdUser.first_name,
+            last_name: createdUser.last_name,
+            email: createdUser.email,
+            isAdmin: createdUser.isAdmin,
+            token: generateToken(createdUser)
+        });
     }
-));
+}));
 
 //change user details
 userRouter.put('/:id', isAuth, asyncHandler(async (req, res) => {
@@ -86,8 +85,9 @@ userRouter.put('/:id', isAuth, asyncHandler(async (req, res) => {
         const updatedUser = await user.save();
         res.send({
             _id: updatedUser._id,
-            name: updatedUser.first_name,
-            last_name: updatedUser.email,
+            first_name: updatedUser.first_name,
+            last_name: updatedUser.last_name,
+            email: updatedUser.email,
             isAdmin: updatedUser.isAdmin,
             token: generateToken(updatedUser)
         });

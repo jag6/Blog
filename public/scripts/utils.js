@@ -3,7 +3,7 @@ export const showMessage = (message, callback) => {
     `
         <div>
             <div id="message-overlay-content">${message}</div>
-            <button id="message-overlay-close-btn">OK</button>
+            <button id="message-overlay-close-btn" class="message-overlay-close-btn">OK</button>
         </div>
     `;
     document.getElementById('message-overlay').classList.add('active');
@@ -13,4 +13,14 @@ export const showMessage = (message, callback) => {
             callback();
         }
     });
+};
+
+export const escapeHTML = (unsafe_str) => {
+    return unsafe_str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/\"/g, '&quot;')
+      .replace(/\'/g, '&#39;')
+      .replace(/\//g, '&#x2F;')
 };

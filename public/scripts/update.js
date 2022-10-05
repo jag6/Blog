@@ -1,22 +1,10 @@
-const apiUrl = location.href.startsWith('http://localhost') 
-? 'http://localhost:5000'
-: '';
+import { apiUrl} from "./config.js";
+import { getUserInfo } from "./cookies.js";
 
-const getUserInfo = () => {
-    return localStorage.getItem('userInfo')
-    ? JSON.parse(localStorage.getItem('userInfo'))
-    : {
-        first_name: '',
-        last_name: '', 
-        email: '', 
-        password: ''
-    };
-};
-
-const update = async ({ first_name, last_name, password }) => {
+const update = async ({ first_name, last_name, email, password }) => {
     try {
         const { _id, token } = getUserInfo();
-        const response = ({
+        const response = await axios ({
             url: `${apiUrl}/api/users/${_id}`,
             method: 'PUT',
             headers: {
@@ -26,9 +14,14 @@ const update = async ({ first_name, last_name, password }) => {
             data: {
                 first_name,
                 last_name,
+                email,
                 password
             }
-        })
+        });
+        if(response.statusText !== 'OK') {
+            throw new Error(response.data.message);
+        }
+        return response.data;
     }catch (err) {
         console.log(err);
         return { error: err.response.data.message || err.message };

@@ -1,6 +1,6 @@
-import { apiUrl } from "./config.js";
 import { showMessage } from "./utils.js";
 import { setUserInfo } from "./cookies.js";
+import { register } from "../apis/registerApi.js";
 
 const firstNameEl = document.getElementById("first_name");
 const lastNameEl = document.getElementById("last_name");
@@ -104,7 +104,7 @@ const showError = (input, message) => {
     // show the error message
     const error = formField.querySelector('small');
     error.textContent = message;
-    };
+};
     
 const showSuccess = (input) => {
     // get the form-field element
@@ -115,7 +115,7 @@ const showSuccess = (input) => {
     // hide the error message
     const error = formField.querySelector('small');
     error.textContent = '';
-}
+};
 
 const debounce = (fn, delay = 500) => {
     let timeoutId;
@@ -151,32 +151,7 @@ const checkEverything = () => {
                 break;
         }
     })
-)}
-
-const register = async ({ first_name, last_name, email, password }) => {
-    try {
-        const response = await axios({
-            url: `${apiUrl}/api/users/register`,
-            method: 'POST',
-            header: {
-                'Content-Type': 'application/json'
-            },
-            data: {
-                first_name,
-                last_name,
-                email,
-                password
-            }
-        })
-        if(response.statusText !== 'OK') {
-            throw new Error(response.data.message);
-        }
-        return response.data;
-    }catch (err) {
-        console.log(err);
-        return {error: err.response.data.message || err.message};
-    }
-};
+)};
 
 const submitRegister = () => {
     document.getElementById("register-form").addEventListener('submit', async (e) => {
@@ -209,6 +184,6 @@ const submitRegister = () => {
             }
         }
     })
-}
+};
 
 checkEverything(), submitRegister();
