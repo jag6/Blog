@@ -1,4 +1,4 @@
-import { getUserInfo } from "./cookies.js"; 
+import { getUserInfo } from "../cookies.js"; 
 
 const { isAdmin } = getUserInfo();
 

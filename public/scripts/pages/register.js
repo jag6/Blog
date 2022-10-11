@@ -1,5 +1,5 @@
-import { showMessage } from "./utils.js";
-import { setUserInfo } from "./cookies.js";
+import { showMessage } from "../utils.js";
+import { setUserInfo } from "../cookies.js";
 import { register } from "../apis/registerApi.js";
 
 const firstNameEl = document.getElementById("first_name");

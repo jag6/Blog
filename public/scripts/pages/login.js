@@ -1,5 +1,5 @@
-import { showMessage } from "./utils.js";
-import { setUserInfo } from "./cookies.js";
+import { showMessage } from "../utils.js";
+import { setUserInfo } from "../cookies.js";
 import { loggingIn } from "../apis/loginApi.js";
 
 const login = () => {
