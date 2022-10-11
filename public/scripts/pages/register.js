@@ -1,5 +1,5 @@
-import { showMessage } from "../utils.js";
-import { setUserInfo } from "../cookies.js";
+import { showMessage } from "../export/utils.js";
+import { setUserInfo } from "../export/cookies.js";
 import { register } from "../apis/registerApi.js";
 
 const firstNameEl = document.getElementById("first_name");
@@ -131,59 +131,55 @@ const debounce = (fn, delay = 500) => {
     };
 };
 
-const checkEverything = () => {
-    document.getElementById("register-form").addEventListener('input', debounce(function (e) {
-        switch (e.target.id) {
-            case 'first_name':
-                checkFirstName();
-                break;
-            case 'last_name':
-                checkLastName();
-                break;
-            case 'email':
-                checkEmail();
-                break;
-            case 'password':
-                checkPassword();
-                break;
-            case 're-enter-password':
-                checkConfirmPassword();
-                break;
-        }
-    })
-)};
+//check everything
+document.getElementById("register-form").addEventListener('input', debounce(function (e) {
+    switch (e.target.id) {
+        case 'first_name':
+            checkFirstName();
+            break;
+        case 'last_name':
+            checkLastName();
+            break;
+        case 'email':
+            checkEmail();
+            break;
+        case 'password':
+            checkPassword();
+            break;
+        case 're-enter-password':
+            checkConfirmPassword();
+            break;
+    }
+}));
 
-const submitRegister = () => {
-    document.getElementById("register-form").addEventListener('submit', async (e) => {
-        e.preventDefault();
-        let isFirstNameValid = checkFirstName(),
-            isLastNameValid = checkLastName(),
-            isEmailValid = checkEmail(),
-            isPasswordValid = checkPassword(),
-            isConfirmPasswordValid = checkConfirmPassword();
-    
-        let isFormValid = 
-            isFirstNameValid &&
-            isLastNameValid &&
-            isEmailValid &&
-            isPasswordValid &&
-            isConfirmPasswordValid;
-    
-        if(isFormValid) {
-            const data = await register({
-                first_name: document.getElementById("first_name").value,
-                last_name: document.getElementById("last_name").value,
-                email: document.getElementById("email").value,
-                password: document.getElementById("password").value
-            });
-            if(data.error) {
-                showMessage(data.error);
-            }else {
-                setUserInfo(data);
-                location.href = '/';
-            }
-        }
-    })
-};
+//submit register
+document.getElementById("register-form").addEventListener('submit', async (e) => {
+    e.preventDefault();
+    let isFirstNameValid = checkFirstName(),
+        isLastNameValid = checkLastName(),
+        isEmailValid = checkEmail(),
+        isPasswordValid = checkPassword(),
+        isConfirmPasswordValid = checkConfirmPassword();
 
-checkEverything(), submitRegister();
+    let isFormValid = 
+        isFirstNameValid &&
+        isLastNameValid &&
+        isEmailValid &&
+        isPasswordValid &&
+        isConfirmPasswordValid;
+
+    if(isFormValid) {
+        const data = await register({
+            first_name: document.getElementById("first_name").value,
+            last_name: document.getElementById("last_name").value,
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value
+        });
+        if(data.error) {
+            showMessage(data.error);
+        }else {
+            setUserInfo(data);
+            location.href = '/';
+        }
+    }
+});

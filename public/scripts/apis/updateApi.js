@@ -1,7 +1,7 @@
-import { apiUrl} from "./config.js";
-import { getUserInfo } from "./cookies.js";
+import { apiUrl} from "../export/config.js";
+import { getUserInfo } from "../export/cookies.js";
 
-const update = async ({ first_name, last_name, email, password }) => {
+export const update = async ({ first_name, last_name, email, password }) => {
     try {
         const { _id, token } = getUserInfo();
         const response = await axios ({
@@ -27,5 +27,3 @@ const update = async ({ first_name, last_name, email, password }) => {
         return { error: err.response.data.message || err.message };
     }
 };
-
-update();

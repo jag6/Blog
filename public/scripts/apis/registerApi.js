@@ -1,4 +1,4 @@
-import { apiUrl } from "../config.js";
+import { apiUrl } from "../export/config.js";
 
 export const register = async ({ first_name, last_name, email, password }) => {
     try {

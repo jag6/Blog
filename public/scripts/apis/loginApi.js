@@ -1,4 +1,4 @@
-import { apiUrl } from "../config.js";
+import { apiUrl } from "../export/config.js";
 
 export const loggingIn = async ({ email, password }) => {
     try {

@@ -1,10 +1,6 @@
-import { clearUser } from "../cookies.js";
+import { clearUser } from "../export/cookies.js";
 
-const logout = () => {
-    document.getElementById('logout').addEventListener('click', () => {
-        clearUser();
-        location.href = '/login';
-    });
-};
-
-logout();
+document.getElementById('logout').addEventListener('click', () => {
+    clearUser();
+    location.href = '/login';
+});

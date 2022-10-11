@@ -1,5 +1,5 @@
 import { apiUrl } from "../scripts/config.js";
-import { getUserInfo } from "../scripts/cookies.js"; 
+import { getUserInfo } from "../export/cookies.js";
 
 export const editArticle = async (article) => {
     try {
