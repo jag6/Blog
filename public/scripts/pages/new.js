@@ -1,8 +1,9 @@
-import { editArticle } from "../apis/editApi.js";
+import { newArticle } from "../apis/newApi.js";
 import { showMessage } from "../export/utils.js";
 
-document.getElementById('edit-form').addEventListener('submit', async () => {
-    const data = await editArticle({
+document.getElementById('new-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = await newArticle({
         title: document.getElementById('title').value,
         category: document.getElementById('category').value,
         description: document.getElementById('description').value,
@@ -12,7 +13,7 @@ document.getElementById('edit-form').addEventListener('submit', async () => {
     if(data.error) {
         showMessage(data.error);
     }else {
-        showMessage('Article Update Successful');
+        showMessage('New Article Saved');
         location.href = '/dashboard';
     }
 });

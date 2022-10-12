@@ -1,5 +1,5 @@
 import express from "express";
-import asyncHandler from "express-async-handler";
+import expressAsyncHandler from "express-async-handler";
 import User from "../models/userModel";
 import config from "../config";
 import { generateToken, isAuth, isAdmin } from "../utils";
@@ -7,7 +7,7 @@ import { generateToken, isAuth, isAdmin } from "../utils";
 const userRouter = express.Router();
 
 //create admin user
-userRouter.get('/createadmin', asyncHandler(async (req, res) => {
+userRouter.get('/createadmin', expressAsyncHandler(async (req, res) => {
     try {
         const user = new User({
             first_name: 'Matt',
@@ -19,12 +19,12 @@ userRouter.get('/createadmin', asyncHandler(async (req, res) => {
         const createdUser = await user.save();
         res.send(createdUser);
     }catch(err) {
-        res.status(500).send({message: err.message});
+        res.status(500).send({ message: err.message });
     }
 }));
 
 //login user
-userRouter.post('/login', asyncHandler(async (req, res) => {
+userRouter.post('/login', expressAsyncHandler(async (req, res) => {
     const loginUser = await User.findOne({
         email: req.body.email,
         password: req.body.password
@@ -46,7 +46,7 @@ userRouter.post('/login', asyncHandler(async (req, res) => {
 }));
 
 //register user
-userRouter.post('/register', asyncHandler(async (req, res) => {
+userRouter.post('/register', expressAsyncHandler(async (req, res) => {
     const user = new User({
         first_name: req.body.first_name,
         last_name: req.body.last_name,
@@ -71,7 +71,7 @@ userRouter.post('/register', asyncHandler(async (req, res) => {
 }));
 
 //change user details
-userRouter.put('/:id', isAuth, asyncHandler(async (req, res) => {
+userRouter.put('/:id', isAuth, expressAsyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id);
     if(!user) {
         res.status(404).send({
@@ -95,7 +95,7 @@ userRouter.put('/:id', isAuth, asyncHandler(async (req, res) => {
 }));
 
 //delete user
-userRouter.delete('/:id', isAuth, isAdmin, asyncHandler(async (req, res) => {
+userRouter.delete('/:id', isAuth, isAdmin, expressAsyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id);
     if(user) {
         const deletedUser = await user.remove();

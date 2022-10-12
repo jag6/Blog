@@ -2,7 +2,9 @@ export const showMessage = (message, callback) => {
     document.getElementById('message-overlay').innerHTML =
     `
         <div>
-            <div id="message-overlay-content">${message}</div>
+            <div id="message-overlay-content">
+                <p>${message}</p>
+            </div>
             <button id="message-overlay-close-btn" class="message-overlay-close-btn">OK</button>
         </div>
     `;

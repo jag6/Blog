@@ -19,7 +19,7 @@
     <meta property="og:url" content="">
     <!-- Scripts -->
     <%- include ('../components/scripts.ejs') %>
-    
+    <script type="module" src="/scripts/testToken.js" defer></script>  
 </head>
 <body>
     <%- include('../components/header') %>
@@ -34,10 +34,7 @@
                 <h2><%= user.last_name %></h2>
                 <h3><%= user.isAdmin %></h3>
                 <h4><%= user.password %></h4>
-                <div id="user-info"></div>
-                <script>
-                    document.getElementById('user-info').innerHtml = localStorage.getItem('userInfo');
-                </script>
+                <h5 id="user-info"></h5>
                 <form action="/contact/<%= user.id %>?_method=delete" method="post" class="d-inline">
                     <button type="submit" class="btn red">DELETE</button>
                 </form>

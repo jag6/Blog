@@ -8,29 +8,27 @@
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="article"/>
     <!-- Page Data -->
-    <title><%= article.title %></title>
-    <meta name="description" content="<%= article.description %>">
-    <meta name="author" content="<%= article.author %>">
+    <title>Edit Article</title>
+    <meta name="description" content="Edit Article">
     <!-- Twitter MetaData -->
-    <meta name="twitter:title" content="<%= article.title %>">
-    <meta name="twitter:description" content="<%= article.description %>">
+    <meta name="twitter:title" content="Edit Article">
+    <meta name="twitter:description" content="Edit Article">
     <!-- <meta name="twitter:image" content="<%= article.twitterImg %>"> -->
     <!-- Other Social Media MetaData -->
-    <meta property="og:title" content="<%= article.title %>">
-    <meta property="og:description" content="<%= article.description %>">
+    <meta property="og:title" content="Edit Article">
+    <meta property="og:description" content="Edit Article">
     <!-- <meta property="og:image" content="<%= article.ogImg %>"> -->
-    <meta property="og:url" content="website.com/<%= article.slug %>">
     <%- include('../components/scripts') %>
     <script type="module" src="/scripts/pages/edit.js" defer></script>
 </head>
 <body>
     <%- include('../components/header') %>
     <main>
-        <section class="myContainer margin-btm-3">
+        <section class="myContainer margin-btm-3 article">
             <section class="top">
                 <h1>Edit Article</h1>
             </section>
-            <form action="/blog/<%= article.id %>?_method=put" method="post">
+            <form id="edit-form">
                 <%- include('../components/formFields') %>
             </form>
         </section>

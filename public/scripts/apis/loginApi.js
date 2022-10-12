@@ -2,7 +2,7 @@ import { apiUrl } from "../export/config.js";
 
 export const loggingIn = async ({ email, password }) => {
     try {
-        const response = await axios({
+        const response = await axios ({
             url: `${apiUrl}/api/users/login`,
             method: 'POST',
             header: {
