@@ -13,11 +13,9 @@
     <!-- Twitter MetaData -->
     <meta name="twitter:title" content="Edit Article">
     <meta name="twitter:description" content="Edit Article">
-    <!-- <meta name="twitter:image" content="<%= article.twitterImg %>"> -->
     <!-- Other Social Media MetaData -->
     <meta property="og:title" content="Edit Article">
     <meta property="og:description" content="Edit Article">
-    <!-- <meta property="og:image" content="<%= article.ogImg %>"> -->
     <%- include('../components/scripts') %>
     <script type="module" src="/scripts/pages/edit.js" defer></script>
 </head>
@@ -28,7 +26,7 @@
             <section class="top">
                 <h1>Edit Article</h1>
             </section>
-            <form id="edit-form">
+            <form id="edit-form" action="/blog/<%= article.id %>?_method=put" method="post">
                 <%- include('../components/formFields') %>
             </form>
         </section>
@@ -36,3 +34,5 @@
     <%- include('../components/footer') %>
 </body>
 </html>
+
+<!-- action="/blog/<%= article.id %>?_method=put" method="post" -->

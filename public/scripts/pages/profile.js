@@ -1,7 +1,7 @@
 import { apiUrl} from "../export/config.js";
 import { getUserInfo } from "../export/cookies.js";
 
-export const update = async ({ first_name, last_name, email, password }) => {
+const update = async ({ first_name, last_name, email, password }) => {
     try {
         const { _id, token } = getUserInfo();
         const response = await axios ({

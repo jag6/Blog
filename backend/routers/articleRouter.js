@@ -1,8 +1,7 @@
 import express from "express";
 import expressAsyncHandler from "express-async-handler";
 import Article from "../models/articleModel";
-//import { isAuth, isAdmin } from "../utils";
-
+import { isAuth, isAdmin } from "../utils";
 
 const articleRouter = express.Router();
 
@@ -12,7 +11,7 @@ articleRouter.get('/new', (req, res) => {
 });
 
 //saves new blog article
-articleRouter.post('/new', expressAsyncHandler(async (req, res) => {
+articleRouter.post('/new', isAuth, isAdmin, expressAsyncHandler(async (req, res) => {
     const article = new Article({
         title: req.body.title,
         category: req.body.category,
@@ -50,8 +49,8 @@ articleRouter.get('/:slug', async (req, res) => {
 });
 
 //edits blog article
-articleRouter.put('/:id', expressAsyncHandler(async (req, res) => {
-    const article = await Article.findById(req.params.id);
+articleRouter.put('/:id', isAuth, isAdmin, expressAsyncHandler(async (req, res) => {
+    const article = await Article.findByIdAndUpdate(req.params.id);
     if(article) {
         article.title = req.body.title;
         article.category = req.body.category;
