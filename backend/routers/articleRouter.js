@@ -10,8 +10,10 @@ articleRouter.get('/new', async (req, res) => {
     res.render('blog/new', { article: new Article() })
 });
 
+//get all articles
 articleRouter.get('/articles', expressAsyncHandler(async (req, res) => {
-    const articles = await Article.find({});
+    const articles = await Article.find().sort(
+        { createdAt: 'descending' });
     res.send(articles);
 }));
 
@@ -54,7 +56,7 @@ articleRouter.get('/edit/:id', async (req, res) => {
 });
 
 //edit blog article
-articleRouter.put('/:id', isAuth, isAdmin, expressAsyncHandler(async (req, res) => {
+articleRouter.post('/edit/:id', isAuth, isAdmin, expressAsyncHandler(async (req, res) => {
     const article = await Article.findByIdAndUpdate(req.params.id);
     if(article) {
         article.title = req.body.title;

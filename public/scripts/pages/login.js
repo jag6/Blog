@@ -5,7 +5,7 @@ import { showMessage } from "../export/utils.js";
 const loggingIn = async ({ email, password }) => {
     try {
         const response = await axios ({
-            url: `${apiUrl}/api/users/login`,
+            url: `${apiUrl}/login`,
             method: 'POST',
             header: {
                 'Content-Type': 'application/json'
@@ -35,7 +35,6 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
         showMessage(data.error);
     }else {
         setUserInfo(data);
-        showMessage('Login Successful')
         location.href = '/dashboard';
     }
 });

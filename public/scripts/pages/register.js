@@ -5,7 +5,7 @@ import { showMessage } from "../export/utils.js";
 const register = async ({ first_name, last_name, email, password }) => {
     try {
         const response = await axios ({
-            url: `${apiUrl}/api/users/register`,
+            url: `${apiUrl}/register`,
             method: 'POST',
             header: {
                 'Content-Type': 'application/json'

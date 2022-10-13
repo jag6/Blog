@@ -41,10 +41,6 @@ app.use('/blog', articleRouter);
 app.use('/contact', contactRouter);
 app.use('/', userRouter); //register, login, dashboard
 
-//launch apis
-app.use('/api/users', userRouter);
-app.use('/api/blog', articleRouter);
-
 //get pages, render has to match the folder structure
 //for other pages requiring dynamic functionality use router.get('/...')
 app.get('/', async (req, res) => {

@@ -61,7 +61,7 @@
                         <div class="multiple-btns-div">
                             <a class="btn blue" href="blog/<%= article.slug %>">Read More</a>
                             <a class="btn green" href="blog/edit/<%= article.id %>">EDIT</a>
-                            <form action="/blog/<%= article.id %>?_method=delete" method="post" class="d-inline">
+                            <form action="/blog/delete/<%= article.id %>?_method=delete" method="post" class="d-inline">
                                 <button type="submit" class="btn red">DELETE</button>
                             </form>
                         </div>

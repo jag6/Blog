@@ -6,7 +6,7 @@ const newArticle = async ({ title, category, description, markdown, author }) =>
     try {
         const { token } = getUserInfo();
         const response = await axios ({
-            url: `${apiUrl}/api/blog/new`,
+            url: `${apiUrl}/blog/new`,
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -41,7 +41,6 @@ document.getElementById('new-form').addEventListener('submit', async (e) => {
     if(data.error) {
         showMessage(data.error);
     }else {
-        showMessage('New Article Saved');
         location.href = '/dashboard';
     }
 });

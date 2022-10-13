@@ -1,13 +1,13 @@
-import { apiUrl } from "../export/config.js";
 import { getUserInfo } from "../export/cookies.js";
 import { showMessage } from "../export/utils.js";
 
 const editArticle = async (article) => {
     try {
+        const getUrl = window.location.href;
         const { token } = getUserInfo();
         const response = await axios ({
-            url: `${apiUrl}/api/blog/edit/${article._id}`,
-            method: 'PUT',
+            url: getUrl,
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`
@@ -35,7 +35,6 @@ document.getElementById('edit-form').addEventListener('submit', async () => {
     if(data.error) {
         showMessage(data.error);
     }else {
-        showMessage('Article Update Successful');
         location.href = '/dashboard';
     }
 });

@@ -25,8 +25,9 @@
         <section class="myContainer margin-btm-3 article">
             <section class="top">
                 <h1>Edit Article</h1>
+                <h3 id="url"></h3>
             </section>
-            <form id="edit-form" action="/blog/<%= article.id %>?_method=put" method="post">
+            <form id="edit-form">
                 <%- include('../components/formFields') %>
             </form>
         </section>
