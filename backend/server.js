@@ -5,7 +5,6 @@ import cors from "cors";
 import methodOverride from "method-override";
 import mongoSanitize from "express-mongo-sanitize";
 import articleRouter from "./routers/articleRouter";
-import pageRouter from "./routers/pageRouter";
 import userRouter from "./routers/userRouter";
 import Article from "./models/articleModel";
 import User from "./models/userModel";
@@ -27,7 +26,7 @@ app.set("view engine", 'ejs');
 app.use(cors());
 app.use(express.static("public")); 
 app.use(express.urlencoded({ extended: false }));
-app.use(methodOverride('_method')); //allows form to have delete action
+app.use(methodOverride('_method')); //allows form to have put and delete action
 app.use(mongoSanitize());
 app.use(express.json()); //read request's body section
 
@@ -39,16 +38,15 @@ app.use((err, req, res, next) => {
 
 //gives the pages a url to be routed to
 app.use('/blog', articleRouter);
-app.use('/about', pageRouter);
 app.use('/contact', contactRouter);
-app.use('/faq', pageRouter);
-app.use('/', userRouter);
+app.use('/', userRouter); //register, login, dashboard
 
 //launch apis
 app.use('/api/users', userRouter);
 app.use('/api/blog', articleRouter);
 
 //get pages, render has to match the folder structure
+//for other pages requiring dynamic functionality use router.get('/...')
 app.get('/', async (req, res) => {
     const articles = await Article.find().sort(
         { createdAt: 'descending' });
@@ -63,17 +61,6 @@ app.get('/contact', async (req, res) => {
 });
 app.get('/faq', (req,res) => {
     res.render('pages/faq')
-});
-app.get('/register', (req, res) => {
-    res.render('user/register')
-});
-app.get('/login', (req, res) => {
-    res.render('user/login')
-});
-app.get('/dashboard', async (req, res) => {
-    const articles = await Article.find().sort(
-        { createdAt: 'descending' });
-    res.render('user/dashboard', { articles: articles })
 });
 
 app.listen(config.PORT, () => {

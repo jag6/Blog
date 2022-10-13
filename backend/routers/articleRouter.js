@@ -5,12 +5,17 @@ import { isAuth, isAdmin } from "../utils";
 
 const articleRouter = express.Router();
 
-//goes to new blog article page
-articleRouter.get('/new', (req, res) => {
+//new blog article page
+articleRouter.get('/new', async (req, res) => {
     res.render('blog/new', { article: new Article() })
 });
 
-//saves new blog article
+articleRouter.get('/articles', expressAsyncHandler(async (req, res) => {
+    const articles = await Article.find({});
+    res.send(articles);
+}));
+
+//save new blog article
 articleRouter.post('/new', isAuth, isAdmin, expressAsyncHandler(async (req, res) => {
     const article = new Article({
         title: req.body.title,
@@ -35,20 +40,20 @@ articleRouter.post('/new', isAuth, isAdmin, expressAsyncHandler(async (req, res)
     }
 }));
 
-//goes to edit blog article
-articleRouter.get('/edit/:id', async (req, res) => {
-    const article = await Article.findByIdAndUpdate(req.params.id)
-    res.render('blog/edit', { article: article })
-});
-
-//shows blog articles
+//blog article pages
 articleRouter.get('/:slug', async (req, res) => {
     const article = await Article.findOne({ slug: req.params.slug});
     if(article == null) res.redirect('/')
     res.render('blog/show', { article: article })
 });
 
-//edits blog article
+//edit blog article pages
+articleRouter.get('/edit/:id', async (req, res) => {
+    const article = await Article.findByIdAndUpdate(req.params.id)
+    res.render('blog/edit', { article: article })
+});
+
+//edit blog article
 articleRouter.put('/:id', isAuth, isAdmin, expressAsyncHandler(async (req, res) => {
     const article = await Article.findByIdAndUpdate(req.params.id);
     if(article) {
@@ -68,7 +73,7 @@ articleRouter.put('/:id', isAuth, isAdmin, expressAsyncHandler(async (req, res) 
     }
 }));
 
-//deletes blog article
+//delete blog article
 articleRouter.delete('/:id', async (req, res) => {
     await Article.findByIdAndDelete(req.params.id)
     res.redirect('/dashboard')

@@ -123,7 +123,7 @@ input {
     border: var(--border);
 }
 
-.theme-icon {
+.theme-icon, .user-icon {
     width: 2.5rem;
     height: 2.5rem;
     border-width: 1px;

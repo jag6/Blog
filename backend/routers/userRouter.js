@@ -1,10 +1,28 @@
 import express from "express";
 import expressAsyncHandler from "express-async-handler";
 import User from "../models/userModel";
+import Article from "../models/articleModel";
 import config from "../config";
 import { generateToken, isAuth, isAdmin } from "../utils";
 
 const userRouter = express.Router();
+
+//register page
+userRouter.get('/register', (req, res) => {
+    res.render('user/register')
+});
+
+//login page
+userRouter.get('/login', (req, res) => {
+    res.render('user/login')
+});
+
+//admin dashboard page
+userRouter.get('/dashboard', async (req, res) => {
+    const articles = await Article.find().sort(
+        { createdAt: 'descending' });
+    res.render('user/dashboard', { articles: articles })
+});
 
 //create admin user
 userRouter.get('/createadmin', expressAsyncHandler(async (req, res) => {

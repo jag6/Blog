@@ -10,19 +10,20 @@ export const generateToken = (user) => {
             email: user.email,
             isAdmin: user.isAdmin
         },
-        config.JWT_SECRET
+        config.JWT_SECRET,
+        { expiresIn: '3h' }
     );
 };
 
 export const isAuth = (req, res, next) => {
     const bearerToken = req.headers.authorization;
     if(!bearerToken) {
-        res.status(401).send({ message: 'Token has not been supplied' });
+        res.status(401).send({ message: 'Token has not been supplied' }); //nonvalid header authorization
     }else {
         const token = bearerToken.slice(7, bearerToken.length);
         jwt.verify(token, config.JWT_SECRET, (err, data) => {
             if(err) {
-                res.status(401).send({ message: 'Invalid Token' });
+                res.status(401).send({ message: 'Invalid Token' }); //valid api, but no token
             }else {
                 req.user = data;
                 next();
