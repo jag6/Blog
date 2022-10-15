@@ -1,8 +1,8 @@
-import dotenv from "dotenv";
+const dotenv = require('dotenv');
 
 dotenv.config();
 
-export default {
+module.exports = {
     PORT: process.env.PORT,
     ADMIN_PW: process.env.ADMIN_PW,
     MONGODB_URL: process.env.MONGODB_URL,

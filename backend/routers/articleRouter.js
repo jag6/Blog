@@ -1,7 +1,6 @@
-import express from "express";
-import expressAsyncHandler from "express-async-handler";
-import Article from "../models/articleModel";
-import { isAuth, isAdmin } from "../utils";
+const express = require('express');
+const Article = require('../models/articleModel');
+const { isAuth, isAdmin } = require('../utils');
 
 const articleRouter = express.Router();
 
@@ -11,20 +10,22 @@ articleRouter.get('/new', async (req, res) => {
 });
 
 //get all articles
-articleRouter.get('/articles', expressAsyncHandler(async (req, res) => {
+articleRouter.get('/articles', async (req, res) => {
     const articles = await Article.find().sort(
         { createdAt: 'descending' });
     res.send(articles);
-}));
+});
 
 //save new blog article
-articleRouter.post('/new', isAuth, isAdmin, expressAsyncHandler(async (req, res) => {
+articleRouter.post('/new', isAuth, isAdmin, async (req, res) => {
     const article = new Article({
         title: req.body.title,
         category: req.body.category,
         description: req.body.description,
         markdown: req.body.markdown,
-        author: req.body.author
+        author: req.body.author,
+        image: req.body.image,
+        image_description: req.body.image_description
     });
     const createdArticle = await article.save();
     if(!createdArticle) {
@@ -37,10 +38,12 @@ articleRouter.post('/new', isAuth, isAdmin, expressAsyncHandler(async (req, res)
             category: createdArticle.category,
             description: createdArticle.description,
             markdown: createdArticle.markdown,
-            author: createdArticle.author
+            author: createdArticle.author,
+            image: createdArticle.image,
+            image_description: createdArticle.image_description
         });
     }
-}));
+});
 
 //blog article pages
 articleRouter.get('/:slug', async (req, res) => {
@@ -51,12 +54,12 @@ articleRouter.get('/:slug', async (req, res) => {
 
 //edit blog article pages
 articleRouter.get('/edit/:id', async (req, res) => {
-    const article = await Article.findByIdAndUpdate(req.params.id)
+    const article = await Article.findById(req.params.id)
     res.render('blog/edit', { article: article })
 });
 
 //edit blog article
-articleRouter.post('/edit/:id', isAuth, isAdmin, expressAsyncHandler(async (req, res) => {
+articleRouter.post('/edit/:id', isAuth, isAdmin, async (req, res) => {
     const article = await Article.findByIdAndUpdate(req.params.id);
     if(article) {
         article.title = req.body.title;
@@ -64,6 +67,8 @@ articleRouter.post('/edit/:id', isAuth, isAdmin, expressAsyncHandler(async (req,
         article.description = req.body.description;
         article.markdown = req.body.markdown;
         article.author = req.body.author;
+        article.image = req.body.image;
+        article.image_description = req.body.image_description;
         const editedArticle = await article.save();
         if(editedArticle) {
             res.send({ message: 'Article Edited', article: editedArticle });
@@ -73,12 +78,12 @@ articleRouter.post('/edit/:id', isAuth, isAdmin, expressAsyncHandler(async (req,
     }else {
         res.status(404).send({ message: 'Article Not Found'});
     }
-}));
+});
 
 //delete blog article
-articleRouter.delete('/:id', async (req, res) => {
+articleRouter.delete('/delete/:id', async (req, res) => {
     await Article.findByIdAndDelete(req.params.id)
     res.redirect('/dashboard')
 });
 
-export default articleRouter;
+module.exports = articleRouter;

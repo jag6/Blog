@@ -1,8 +1,8 @@
-import mongoose from "mongoose";
-import { marked } from "marked";
-import slugify from "slugify";
-import DOMPurify from "dompurify";
-import { JSDOM } from "jsdom";
+const mongoose = require('mongoose');
+const { marked } = require('marked');
+const slugify = require('slugify');
+const DOMPurify = require('dompurify');
+const { JSDOM } = require('jsdom');
 
 const dompurify = DOMPurify(new JSDOM().window);
 
@@ -25,7 +25,15 @@ const articleSchema = new mongoose.Schema({
     },
     author: {
         type: String,
-        required: true,
+        required: true
+    },
+    image: {
+        type: String,
+        required: true
+    },
+    image_description: {
+        type: String,
+        required: true
     },
     createdAt: {
         type: Date,
@@ -55,6 +63,4 @@ articleSchema.pre('validate', function(next) {
     next();
 });
 
-const Article = mongoose.model('Article', articleSchema);
-
-export default Article;
+module.exports = mongoose.model('Article', articleSchema);

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <%- include('../components/css') %>
+    <link rel="canonical" href="website.com/<%= article.slug %>">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,12 +15,15 @@
     <!-- Twitter MetaData -->
     <meta name="twitter:title" content="<%= article.title %>">
     <meta name="twitter:description" content="<%= article.description %>">
-    <!-- <meta name="twitter:image" content="<%= article.twitterImg %>"> -->
+    <meta name="twitter:image" content="<%= article.twitterImg %>"> -->
+    <meta name="twitter:card" content="summary_large_image">
     <!-- Other Social Media MetaData -->
     <meta property="og:title" content="<%= article.title %>">
     <meta property="og:description" content="<%= article.description %>">
-    <!-- <meta property="og:image" content="<%= article.ogImg %>"> -->
+    <meta property="og:image" content="/images/<%= article.ogImg %>"> -->
     <meta property="og:url" content="website.com/<%= article.slug %>">
+    <meta property="og:site_name" content="Blogtopia">
+    <!-- Scripts -->
     <%- include('../components/scripts') %>
     <script type="module" src="/scripts/backBtn.js" defer></script>
 </head>
@@ -28,14 +32,20 @@
     <main>
         <section class="myContainer">
             <article class="article">
+                <div class="multiple-btns-div margin-top-1 margin-btm-2" id="hidden-a"></div>
                 <section>
-                    <h1><%= article.title %></h1>
+                    <section>
+                        <h1><%= article.title %></h1>
+                    </section>
+                    <p><%= article.description %></p>
                 </section>
                 <div class="multiple-stuff-div">
                     <p><%= article.createdAt.toLocaleDateString() %></p>
                     <a class="b" href=""><%= article.category %></a>
                 </div>
-                <div class="multiple-btns-div margin-top-1 margin-btm-2" id="hidden-a"></div>
+                <div class="article-img">
+                    <img src="/images/<%= article.image %>" alt="<%= article.image_description %>">
+                </div>
                 <section class="article-body">
                     <%- article.sanitizedHtml %>
                 </section>

@@ -1,9 +1,8 @@
-import express from "express";
-import expressAsyncHandler from "express-async-handler";
-import User from "../models/userModel";
-import Article from "../models/articleModel";
-import config from "../config";
-import { generateToken, isAuth, isAdmin } from "../utils";
+const express = require('express');
+const User = require('../models/userModel');
+const Article = require('../models/articleModel');
+const config = require('../config');
+const { generateToken, isAuth, isAdmin } = require('../utils');
 
 const userRouter = express.Router();
 
@@ -25,7 +24,7 @@ userRouter.get('/dashboard', async (req, res) => {
 });
 
 //create admin user
-userRouter.get('/createadmin', expressAsyncHandler(async (req, res) => {
+userRouter.get('/createadmin', async (req, res) => {
     try {
         const user = new User({
             first_name: 'Matt',
@@ -39,10 +38,10 @@ userRouter.get('/createadmin', expressAsyncHandler(async (req, res) => {
     }catch(err) {
         res.status(500).send({ message: err.message });
     }
-}));
+});
 
 //login user
-userRouter.post('/login', expressAsyncHandler(async (req, res) => {
+userRouter.post('/login', async (req, res) => {
     const loginUser = await User.findOne({
         email: req.body.email,
         password: req.body.password
@@ -61,10 +60,10 @@ userRouter.post('/login', expressAsyncHandler(async (req, res) => {
             token: generateToken(loginUser)
         });
     }
-}));
+});
 
 //register user
-userRouter.post('/register', expressAsyncHandler(async (req, res) => {
+userRouter.post('/register', async (req, res) => {
     const user = new User({
         first_name: req.body.first_name,
         last_name: req.body.last_name,
@@ -86,10 +85,10 @@ userRouter.post('/register', expressAsyncHandler(async (req, res) => {
             token: generateToken(createdUser)
         });
     }
-}));
+});
 
 //change user details
-userRouter.put('/:id', isAuth, expressAsyncHandler(async (req, res) => {
+userRouter.put('/:id', isAuth, async (req, res) => {
     const user = await User.findById(req.params.id);
     if(!user) {
         res.status(404).send({
@@ -110,10 +109,10 @@ userRouter.put('/:id', isAuth, expressAsyncHandler(async (req, res) => {
             token: generateToken(updatedUser)
         });
     }
-}));
+});
 
 //delete user
-userRouter.delete('/:id', isAuth, isAdmin, expressAsyncHandler(async (req, res) => {
+userRouter.delete('/:id', isAuth, isAdmin, async (req, res) => {
     const user = await User.findById(req.params.id);
     if(user) {
         const deletedUser = await user.remove();
@@ -121,6 +120,6 @@ userRouter.delete('/:id', isAuth, isAdmin, expressAsyncHandler(async (req, res) 
     }else {
         res.status(404).send({ message: 'User Not Found' });
     }
-}));
+});
 
-export default userRouter;
+module.exports = userRouter;

@@ -1,5 +1,5 @@
-import express from "express";
-import User from "../models/userModel";
+const express = require('express');
+const User = require('../models/userModel');
 
 const contactRouter = express.Router();
 
@@ -10,4 +10,4 @@ contactRouter.delete('/:id', async (req, res) => {
 });
 
 
-export default contactRouter
+module.exports = contactRouter;

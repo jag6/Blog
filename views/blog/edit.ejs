@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <%- include('../components/css') %>
+    <link rel="canonical" href="website.com/<%= article.id %>">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:locale" content="en_US"/>
-    <meta property="og:type" content="article"/>
     <!-- Page Data -->
     <title>Edit Article</title>
     <meta name="description" content="Edit Article">
@@ -16,6 +16,9 @@
     <!-- Other Social Media MetaData -->
     <meta property="og:title" content="Edit Article">
     <meta property="og:description" content="Edit Article">
+    <meta property="og:url" content="website.com/<%= article.id %>">
+    <meta property="og:site_name" content="Blogtopia">
+    <!-- Scripts -->
     <%- include('../components/scripts') %>
     <script type="module" src="/scripts/pages/edit.js" defer></script>
 </head>
@@ -35,5 +38,3 @@
     <%- include('../components/footer') %>
 </body>
 </html>
-
-<!-- action="/blog/<%= article.id %>?_method=put" method="post" -->
