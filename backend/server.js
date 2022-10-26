@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const config = require('./config');
-const cors = require('cors');
 const methodOverride = require('method-override');
 const mongoSanitize = require('express-mongo-sanitize');
 const articleRouter = require('./routers/articleRouter');
@@ -24,7 +23,6 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
-app.use(cors());
 app.use(express.static('public')); 
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method')); //allows form to have put and delete action

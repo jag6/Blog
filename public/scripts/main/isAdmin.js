@@ -1,4 +1,3 @@
-import { apiUrl } from "../export/config.js";
 import { getUserInfo } from "../export/cookies.js"; 
 
 const { isAdmin } = getUserInfo();
