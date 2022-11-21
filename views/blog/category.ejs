@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('../components/css.ejs') %>
+    <link rel="canonical" href="website.com/<%= articles.category_slug %>">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="article"/>
+    <!-- Page Data -->
+    <title>Blog Article Category</title>
+    <meta name="description" content="Blog articles displayed by category">
+    <!-- Twitter MetaData -->
+    <meta name="twitter:title" content="Blog Article Category">
+    <meta name="twitter:description" content="Blog articles displayed by category">
+    <meta name="twitter:image" content="">
+    <!-- Other Social Media MetaData -->
+    <meta property="og:title" content="Blog Article Category">
+    <meta property="og:description" content="Blog articles displayed by category">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+    <%- include('../components/scripts') %>
+</head>
+<body>
+    <%- include('../components/header') %>
+    <div class="overlay" id="message-overlay"></div>
+    <main>
+        <section class="myContainer">
+            <section class="top home-top-header" id="articles-top">
+                <section>
+                    <h1>All Articles for <%= articles.category %></h1>
+                </section>
+            </section>
+            <% articles.forEach(article => { %>
+                <article class="margin-btm-3 article-snippet">
+                    <section class="container-component-level1">
+                        <section>
+                            <h2><%= article.title %></h2>
+                        </section>
+                        <div class="multiple-stuff-div">
+                            <p><%= article.createdAt.toLocaleDateString() %></p>
+                        </div>
+                        <div class="description container-component-level2">
+                            <%= article.description %>
+                        </div>
+                        <div class="multiple-btns-div">
+                            <a class="btn blue" href="<%= article.slug %>">Read More</a>
+                            <a href="" class="green btn">Share</a>
+                        </div>
+                    </section>
+                </article>
+            <% }) %>
+        </section>
+    </main>
+    <%- include('../components/topButton') %>
+    <%- include('../components/footer') %>
+</body>
+</html>

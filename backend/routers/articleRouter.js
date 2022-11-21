@@ -9,7 +9,7 @@ articleRouter.get('/new', async (req, res) => {
     res.render('blog/new', { article: new Article() })
 });
 
-//get all articles
+//get all articles 
 articleRouter.get('/articles', async (req, res) => {
     const articles = await Article.find().sort(
         { createdAt: 'descending' });
@@ -47,9 +47,16 @@ articleRouter.post('/new', isAuth, isAdmin, async (req, res) => {
 
 //blog article pages
 articleRouter.get('/:slug', async (req, res) => {
-    const article = await Article.findOne({ slug: req.params.slug});
+    const article = await Article.findOne({ slug: req.params.slug });
     if(article == null) res.redirect('/')
     res.render('blog/show', { article: article })
+});
+
+//get blog article category page
+articleRouter.get('/:category_slug', async (req, res) => {
+    const articles = await Article.find({ category_slug: req.params.category_slug }).sort(
+        { createdAt: 'descending' });
+    res.render('blog/category', { articles: articles });
 });
 
 //edit blog article pages

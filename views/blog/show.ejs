@@ -15,12 +15,12 @@
     <!-- Twitter MetaData -->
     <meta name="twitter:title" content="<%= article.title %>">
     <meta name="twitter:description" content="<%= article.description %>">
-    <meta name="twitter:image" content="<%= article.twitterImg %>"> 
+    <meta name="twitter:image" content="<%= article.image %>"> 
     <meta name="twitter:card" content="summary_large_image">
     <!-- Other Social Media MetaData -->
     <meta property="og:title" content="<%= article.title %>">
     <meta property="og:description" content="<%= article.description %>">
-    <meta property="og:image" content="/images/<%= article.ogImg %>"> 
+    <meta property="og:image" content="/images/<%= article.image %>"> 
     <meta property="og:url" content="website.com/<%= article.slug %>">
     <meta property="og:site_name" content="Blogtopia">
     <!-- Scripts -->
@@ -39,9 +39,9 @@
                     </section>
                     <p><%= article.description %></p>
                 </section>
-                <div class="multiple-stuff-div">
+                <div class="multiple-stuff-div margin-btm-2">
                     <p><%= article.createdAt.toLocaleDateString() %></p>
-                    <a class="b" href=""><%= article.category %></a>
+                    <a class="b" href="<%= article.category_slug %>"><%= article.category %></a>
                 </div>
                 <div class="article-img">
                     <img src="/images/<%= article.image %>" alt="<%= article.image_description %>">

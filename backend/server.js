@@ -48,19 +48,19 @@ app.use('/api/blog/imageUpload', uploadRouter);
 app.get('/', async (req, res) => {
     const articles = await Article.find().sort(
         { createdAt: 'descending' });
-    res.render('blog/index', { articles: articles })
+    res.render('blog/index', { articles: articles });
 });
 app.get('/about', (req, res) => {
-    res.render('pages/about')
+    res.render('pages/about');
 });
 app.get('/contact', async (req, res) => {
     const users = await User.find();
     res.render('pages/contact', { users: users })
 });
 app.get('/faq', (req,res) => {
-    res.render('pages/faq')
+    res.render('pages/faq');
 });
 
 app.listen(config.PORT, () => {
-    console.log(`http://localhost:${config.PORT}`)
+    console.log(`http://localhost:${config.PORT}`);
 });
