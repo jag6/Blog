@@ -41,7 +41,7 @@
                 </section>
                 <div class="multiple-stuff-div margin-btm-2">
                     <p><%= article.createdAt.toLocaleDateString() %></p>
-                    <a class="b" href="<%= article.category_slug %>"><%= article.category %></a>
+                    <a class="b" href="/blog/category/<%= article.category_slug %>"><%= article.category %></a>
                 </div>
                 <div class="article-img">
                     <img src="/images/<%= article.image %>" alt="<%= article.image_description %>">

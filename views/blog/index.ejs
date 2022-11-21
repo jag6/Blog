@@ -51,13 +51,13 @@
                             </section>
                             <div class="multiple-stuff-div">
                                 <p><%= article.createdAt.toLocaleDateString() %></p>
-                                <a class="b" href="blog/<%= article.category_slug %>"><%= article.category %></a>
+                                <a class="b" href="/blog/category/<%= article.category_slug %>"><%= article.category %></a>
                             </div>
                             <div class="description container-component-level2">
                                 <%= article.description %>
                             </div>
                             <div class="multiple-btns-div">
-                                <a class="btn blue" href="blog/<%= article.slug %>">Read More</a>
+                                <a class="btn blue" href="/blog/<%= article.slug %>">Read More</a>
                                 <a href="" class="green btn">Share</a>
                             </div>
                         </section>
@@ -69,8 +69,8 @@
                     <h2>Categories</h2>
                 </section>
                 <div>
-                    <% articles.forEach(article => {%>
-                        <a href="blog/<%= article.category_slug %>"><%= article.category %></a>
+                    <% articles.forEach(article => { %>
+                        <a href="/blog/category/<%= article.category_slug %>"><%= article.category %></a>
                     <% }) %>
                 </div>
             </aside>

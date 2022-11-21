@@ -6,7 +6,7 @@ const articleRouter = express.Router();
 
 //new blog article page
 articleRouter.get('/new', async (req, res) => {
-    res.render('blog/new', { article: new Article() })
+    res.render('blog/new', { article: new Article() });
 });
 
 //get all articles 
@@ -45,15 +45,15 @@ articleRouter.post('/new', isAuth, isAdmin, async (req, res) => {
     }
 });
 
-//blog article pages
+//blog article page
 articleRouter.get('/:slug', async (req, res) => {
     const article = await Article.findOne({ slug: req.params.slug });
-    if(article == null) res.redirect('/')
-    res.render('blog/show', { article: article })
+    if(article == null) res.redirect('/');
+    res.render('blog/show', { article: article });
 });
 
 //get blog article category page
-articleRouter.get('/:category_slug', async (req, res) => {
+articleRouter.get('/category/:category_slug', async (req, res) => {
     const articles = await Article.find({ category_slug: req.params.category_slug }).sort(
         { createdAt: 'descending' });
     res.render('blog/category', { articles: articles });
@@ -62,7 +62,7 @@ articleRouter.get('/:category_slug', async (req, res) => {
 //edit blog article pages
 articleRouter.get('/edit/:id', async (req, res) => {
     const article = await Article.findById(req.params.id)
-    res.render('blog/edit', { article: article })
+    res.render('blog/edit', { article: article });
 });
 
 //edit blog article
@@ -89,8 +89,8 @@ articleRouter.post('/edit/:id', isAuth, isAdmin, async (req, res) => {
 
 //delete blog article
 articleRouter.delete('/delete/:id', async (req, res) => {
-    await Article.findByIdAndDelete(req.params.id)
-    res.redirect('/dashboard')
+    await Article.findByIdAndDelete(req.params.id);
+    res.redirect('/dashboard');
 });
 
 module.exports = articleRouter;
