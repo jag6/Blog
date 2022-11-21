@@ -10,7 +10,7 @@ Blog articles can only be created, edited, and deleted by an authenticated admin
 
 ### Article Content
 
-Each individual blog article will be generated using EJS. Every new article will be required to fill in 7 fields, and these 7 fields are responsible for supplying the article with it's metadata, slug, image, image description, and text content. The article's text content has been set up to be written in markdown.
+Each individual blog article will be generated using EJS. Every new article will be required to fill in 7 fields, and these 7 fields are responsible for supplying the article with it's metadata, slug, category, category slug, image, image description, and text content. The article's text content has been set up to be written in markdown.
 
 ### Future Features
   
