@@ -12,7 +12,7 @@ module.exports = {
                 isAdmin: user.isAdmin
             },
             config.JWT_SECRET,
-            { expiresIn: '3h' }
+            //{ expiresIn: '3h' }
         );
     },
     

@@ -87,6 +87,31 @@ articleRouter.post('/edit/:id', isAuth, isAdmin, async (req, res) => {
     }
 });
 
+//post comments
+articleRouter.post('/:slug/comment', isAuth, async (req, res) => {
+    const article = await Article.findOne({ slug: req.params.slug });
+    if(article) {
+        if(article.comments.find((x) => x.first_name === req.user.first_name && x.last_name === req.user.last_name)) {
+            return res.status(400).send({ message: 'You\'ve already posted a comment!' });
+        }
+        const comment = {
+            comment: req.body.comment,
+            user: req.user._id,
+            first_name: req.user.first_name,
+            last_name: req.user.last_name
+        };
+        article.comments.push(comment);
+        article.numComments = article.comments.length;
+        const updatedArticle = await article.save();
+        res.status(201).send({
+            message: 'Comment Created',
+            data: updatedArticle.comments[updatedArticle.comments.length - 1]
+        });
+    }else {
+        throw Error('Article does not exist');
+    }
+});
+
 //delete blog article
 articleRouter.delete('/delete/:id', async (req, res) => {
     await Article.findByIdAndDelete(req.params.id);

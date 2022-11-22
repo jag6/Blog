@@ -204,6 +204,10 @@ footer {
 
 /*CLASSES*/
 
+.hidden {
+    display: none;
+}
+
 .flex {
     display: flex;
 }
@@ -212,7 +216,6 @@ footer {
     padding: .5rem 1rem;
     border-radius: 10px;
     font-weight: 700;
-    color: #000;
 }
 
 .btn:hover {
@@ -241,6 +244,18 @@ footer {
 
 .margin-btm-3 {
     margin-bottom: 3rem;
+}
+
+.margin-btm-4 {
+    margin-bottom: 4rem;
+}
+
+.margin-left-1 {
+    margin-left: 1rem;
+}
+
+.margin-left-2 {
+    margin-left: 2rem;
 }
 
 .padding-btm-2 {
@@ -428,6 +443,162 @@ footer {
     margin-top: 2rem;
 }
 
+/*COMMENT SECTION*/
+
+.form-btns {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-top: 2rem;
+}
+
+.form-btns button, .form-btns a {
+    font-size: 20px;
+    line-height: 40px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.form-btns div {
+    display: flex;
+    align-items: center;
+}
+
+.form-btns button:hover {
+    opacity: .8;
+}
+
+.form-btns a {
+    background-color: transparent;
+    border-bottom: 4px solid transparent;
+}
+
+.form-btns a:hover {
+    transition: .2s ease-in-out;
+}
+
+.comments-section {
+    margin-top: 4rem;
+}
+
+.comments-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.comments-header section:first-of-type {
+    display: flex;
+    flex-direction: row;
+}
+
+.comments-header h2 {
+    font-size: 36px;
+    line-height: 60px;
+}
+
+.comments-header div img {
+    width: 60px;
+    height: auto;
+}
+
+.comments-header a, .comments-header p, .reply {
+    font-size: 20px;
+    line-height: 32px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+}
+
+.comments-header a {
+    color: #015732;
+}
+
+.comments-header a {
+    margin: 0 4px;
+}
+
+.comments-header a:first-of-type {
+    margin-left: 0px;
+}
+
+.comments-header a:hover {
+    opacity: .4;
+}
+
+.speech-bubble {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.num-comments {
+    margin-left: -36px;
+    margin-top: -8px;
+    color: #000;
+}
+
+.line-break {
+    border-bottom: .5rem solid #242428;
+    margin-bottom: 2rem;
+}
+
+.leave-comment {
+    margin-bottom: 4rem;
+}
+
+.leave-comment .form-btns {
+    margin-top: 1rem;
+    justify-content: space-between;
+}
+
+.leave-comment .form-btns div:last-child {
+    display: flex;
+    justify-content: center;
+}
+
+.leave-comment .form-btns div, .leave-comment .form-btns div button {
+    width: 100%;
+}
+
+.comment {
+    padding: .5rem 2%;
+    margin: 1rem 0 2rem;
+    border-radius: 10px;
+}
+
+.comment-header section {
+    margin-bottom: -.5rem;
+}
+
+.comment-header p {
+    font-size: 14px;
+}
+
+.comment h3 {
+    font-size: 27px;
+    line-height: 48px;
+}
+
+/*.reply, .reply div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.reply img {
+    width: 32px;
+    height: 32px;
+}*/
+
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+    .leave-comment .form-btns {
+        flex-direction: column;
+    }
+
+    .leave-comment .form-btns div:first-child {
+        margin-bottom: 1rem;
+    }
+}
+
 /*SOCIAL MEDIA ICONS*/
 
 .icon-bar {
@@ -601,14 +772,6 @@ footer {
     font-size: 14px;
     line-height: 24px;
     margin-bottom: 1rem;
-}
-
-.success {
-    color: var(--green);
-}
-
-.error {
-    color: var(--red);
 }
 
 /*DASHBOARD*/

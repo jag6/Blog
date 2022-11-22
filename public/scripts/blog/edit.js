@@ -1,11 +1,10 @@
-import { apiUrl } from "../export/config.js";
+import { apiUrl, getUrl } from "../export/config.js";
 import { getUserInfo } from "../export/cookies.js";
 import { showMessage } from "../export/utils.js";
 
 //post edited article
 const editArticle = async (article) => {
     try {
-        const getUrl = window.location.href;
         const { token } = getUserInfo();
         const response = await axios ({
             url: getUrl,

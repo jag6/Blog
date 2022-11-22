@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include ('../components/css.ejs') %>
-    <link rel="canonical" href="website.com/<%= articles.category_slug %>">
+    <!-- CSS/Fonts -->
+    <%- include('../components/css') %>
+    <!-- Canonical URL-->
+    <link rel="canonical" id="canonical" href="">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,8 +21,10 @@
     <meta property="og:title" content="Blog Article Category">
     <meta property="og:description" content="Blog articles displayed by category">
     <meta property="og:image" content="">
-    <meta property="og:url" content="">
+    <meta property="og:url" id="og-url" content="">
+    <!-- Scripts -->
     <%- include('../components/scripts') %>
+    <script type="module" src="/scripts/blog/category.js" defer></script>
 </head>
 <body>
     <%- include('../components/header') %>
@@ -29,7 +33,7 @@
         <section class="myContainer">
             <section class="top home-top-header" id="articles-top">
                 <section>
-                    <h1>All Articles for <%= articles.category %></h1>
+                    <h1 id="category-show"></h1>
                 </section>
             </section>
             <% articles.forEach(article => { %>
@@ -47,6 +51,9 @@
                         <div class="multiple-btns-div">
                             <a class="btn blue" href="/blog/<%= article.slug %>">Read More</a>
                             <a href="" class="green btn">Share</a>
+                        </div>
+                        <div id="category-hidden" class="hidden">
+                            <%= article.category %> (All Articles)
                         </div>
                     </section>
                 </article>
