@@ -10,7 +10,7 @@ Blog articles can only be created, edited, and deleted by an authenticated admin
 
 ### Non-Admin User
 
-Leave comments for each blog article. Limit of one comment per user per article.
+Leave comment for each blog article. Limit of one comment per user per article.
 
 ### Article Content
 
