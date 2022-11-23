@@ -19,5 +19,5 @@ Each individual blog article will be generated using EJS. Every new article will
 ### Future Features
   
   - Comment Replies for admin user
-  - User Info Detail Change
+  - User Profile Page w/ option to change personal info
   - Search bar
