@@ -1,35 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- CSS/Fonts -->
-    <%- include('../components/css') %>
-     <!-- Canonical URL-->
-    <link rel="canonical" href="website.com/new">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:locale" content="en_US"/>
-    <meta property="og:type" content="article"/>
-    <!-- Page Data -->
-    <title>New Article</title>
-    <meta name="description" content="Write a new article here">
-    <!-- Twitter MetaData -->
-    <meta name="twitter:title" content="New Article">
-    <meta name="twitter:description" content="Write a new article here">
-    <meta name="twitter:image" content="">
-    <!-- Other Social Media MetaData -->
-    <meta property="og:title" content="New Article">
-    <meta property="og:description" content="Write a new article here">
-    <meta property="og:image" content="">
-    <meta property="og:url" content="">
-    <%- include('../components/scripts') %>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script type="module" src="/scripts/blog/new.js" defer></script>
-</head>
-<body>
-    <%- include('../components/header') %>
-    <div class="overlay" id="message-overlay"></div>
-    <main>
+<%- include('../components/head') %>
         <section class="myContainer margin-btm-3 article">
             <section class="top">
                 <section>
@@ -46,5 +15,3 @@
     </main>
     <%- include('../components/topButton') %>
     <%- include('../components/footer') %>
-</body>
-</html>

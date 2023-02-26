@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadata First -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%- meta_title -%> - Blogtopia</title>
+    <!-- CSS/Fonts -->
+    <%- include('../components/css') %>
+    <!-- Canonical URL-->
+    <link rel="canonical" href="https://blogtopia.io<%- meta_url -%>">
+    <!-- Metadata -->
+    <meta property="og:locale" content="en_US"/>
+    <meta name="description" content="<%- meta_description -%>">
+    <!-- Twitter Metadata -->
+    <meta name="twitter:title" content="<%- meta_title -%>">
+    <meta name="twitter:description" content="<%- meta_description -%>">
+    <meta name="twitter:image" content="https://blogtopia.io/images/<%- meta_image -%>">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Other Social Media Metadata -->
+    <meta property="og:title" content="<%- meta_title -%>">
+    <meta property="og:description" content="<%- meta_description -%>">
+    <meta property="og:image" content="https://blogtopia.io/images/<%- meta_image -%>">
+    <meta property="og:url" content="https://blogtopia.io<%- meta_url -%>">
+    <meta property="og:site_name" content="Blogtopia">
+    <!-- Scripts -->
+    <%- include('../components/scripts') %>
+    <%  if(script) { %>
+            <%- script -%>
+    <% } %>
+</head>
+<body>
+    <%- include('../components/header') %>
+    <div class="overlay" id="message-overlay"></div>
+    <main>

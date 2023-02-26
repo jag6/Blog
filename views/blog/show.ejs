@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- CSS/Fonts -->
-    <%- include('../components/css') %>
-     <!-- Canonical URL-->
-    <link rel="canonical" href="website.com/<%= article.slug %>">
+    <!-- Metadata First -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= article.title %></title>
+    <!-- CSS/Fonts -->
+    <%- include('../components/css') %>
+    <!-- Canonical URL-->
+    <link rel="canonical" href="website.com/<%= article.slug %>">
+    <!-- Other Metadata -->
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="article"/>
-    <!-- Page Data -->
-    <title><%= article.title %></title>
     <meta name="description" content="<%= article.description %>">
     <meta name="author" content="<%= article.author %>">
-    <!-- Twitter MetaData -->
+    <!-- Twitter Metadata -->
     <meta name="twitter:title" content="<%= article.title %>">
     <meta name="twitter:description" content="<%= article.description %>">
     <meta name="twitter:image" content="<%= article.image %>"> 
     <meta name="twitter:card" content="summary_large_image">
-    <!-- Other Social Media MetaData -->
+    <!-- Other Social Media Metadata -->
     <meta property="og:title" content="<%= article.title %>">
     <meta property="og:description" content="<%= article.description %>">
     <meta property="og:image" content="/images/<%= article.image %>"> 
@@ -27,7 +28,6 @@
     <meta property="og:site_name" content="Blogtopia">
     <!-- Scripts -->
     <%- include('../components/scripts') %>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="module" src="/scripts/blog/comment.js" defer></script>
     <script type="module" src="/scripts/backBtn.js" defer></script>
 </head>
@@ -101,5 +101,3 @@
     </main>
     <%- include('../components/iconBar') %>
     <%- include('../components/footer') %>
-</body>
-</html>

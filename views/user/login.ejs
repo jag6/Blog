@@ -1,39 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <%- include ('../components/css.ejs') %>
-    <link rel="canonical" href="website.com/login">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:locale" content="en_US"/>
-    <!-- Page Data -->
-    <title>Login</title>
-    <meta name="description" content="Please login">
-    <!-- Twitter MetaData -->
-    <meta name="twitter:title" content="Login">
-    <meta name="twitter:description" content="Please login">
-    <meta name="twitter:image" content="">
-    <meta name="twitter:card" content="summary_large_image">
-    <!-- Other Social Media MetaData -->
-    <meta property="og:title" content="Login">
-    <meta property="og:description" content="Please login">
-    <meta property="og:image" content="">
-    <meta property="og:url" content="">
-    <meta property="og:site_name" content="Blogtopia">
-    <!-- Scripts -->
-    <%- include ('../components/scripts.ejs') %>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script type="module" src="/scripts/user/login.js" defer></script>
-</head>
-<body>
-    <%- include('../components/header') %>
-    <div class="overlay" id="message-overlay"></div>
-    <main>
+<%- include('../components/head') %>
         <section class="myContainer margin-btm-3">
             <form id="login-form" class="form-group user-form">
                 <section class="top">
-                    <h1>Login</h1>
+                    <h1><%- meta_title -%></h1>
                 </section>
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email">
@@ -45,9 +14,5 @@
                     <a href="/register">Create your account</a>
                 </div>
             </form>
-            
         </section>
-    </main>
     <%- include('../components/footer') %>
-</body>
-</html>

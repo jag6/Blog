@@ -1,7 +1,7 @@
 import { apiUrl} from "../export/config.js";
 import { getUserInfo } from "../export/cookies.js";
 
-const update = async ({ first_name, last_name, email, password }) => {
+const updateProfile = async ({ first_name, last_name, email, password }) => {
     try {
         const { _id, token } = getUserInfo();
         const response = await axios ({
@@ -27,3 +27,19 @@ const update = async ({ first_name, last_name, email, password }) => {
         return { error: err.response.data.message || err.message };
     }
 };
+
+document.getElementById("profile-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = await updateProfile({
+        firstname: document.getElementById('firstname').value,
+        lastname: document.getElementById('lastname').value,
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value
+    });
+    if(data.error) {
+        showMessage(data.error);
+    }else {
+        setUserInfo(data);
+        location.href = '/dashboard';
+    }
+});

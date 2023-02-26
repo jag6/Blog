@@ -34,6 +34,7 @@ html {
 html, body {
     min-height: 100vh;
     position: relative;
+    scroll-padding-top: 72px;
 }
 
 body {
@@ -47,8 +48,7 @@ body button {
 
 main {
     max-width: 1100px;
-    padding: 0 5%;
-    padding-bottom: 64px;
+    padding: 72px 0 64px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -108,8 +108,10 @@ button {
 /*HEADER & NAV*/
 
 header {
-    background-color: #4a4a4f;
-    background-color: #2a2a2e;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 9999;
 }
 
 .logo {
@@ -189,16 +191,9 @@ footer {
   
 }
 
-@media only screen and (min-width: 1101px) {
+@media only screen and (max-width: 1100px) {
     main {
-        padding: 0;
-        padding-bottom: 64px;
-    }
-}
-
-@media only screen and (min-width: 0px) and (max-width: 1099px) {
-    .header-container {
-        padding: 1rem 5%;
+        padding: 72px 5% 64px 0%;
     }
 }
 
@@ -329,7 +324,7 @@ footer {
     position: relative;
 }
 
-.article-snippet {
+.articles-container {
     max-width: 750px;
 }
 
@@ -362,20 +357,27 @@ footer {
     justify-content: center;
 }
 
-.category-container a {
-    font-size: 24px;
-    line-height: 60px;
-    height: 60px;
-    color: #000;
-    text-align: center;
+.category-container ul li {
+    width: 200px;
+    display: flex;
 }
 
-.category-container a:hover {
+.category-container ul li a {
+    font-size: 24px;
+    line-height: 60px;
+    width: 200px;
+    height: 60px;
+    color: #000;
+    text-align: left;
+    padding-left: 2rem;
+}
+
+.category-container ul li a:hover {
     background-color: #A0C9DB;
     cursor: pointer;
 }
 
-.category-container a:last-child:hover {
+.category-container ul li:last-of-type a:hover {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
@@ -442,6 +444,7 @@ footer {
 .article-body h2, .article-body h3, .article-body h4, .article-body h5 {
     margin-top: 2rem;
 }
+
 
 /*COMMENT SECTION*/
 
@@ -599,6 +602,7 @@ footer {
     }
 }
 
+
 /*SOCIAL MEDIA ICONS*/
 
 .icon-bar {
@@ -607,6 +611,7 @@ footer {
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+    display: none;
 
 }
   
@@ -679,6 +684,7 @@ footer {
     background: #ff0000;
 }
 
+
 /*TOP BTN*/
 
 .top-btn {
@@ -725,6 +731,7 @@ footer {
         height: 3rem;
     }
 }
+
 
 /*LOGIN*/
 
@@ -774,6 +781,7 @@ footer {
     margin-bottom: 1rem;
 }
 
+
 /*DASHBOARD*/
 
 .profile-btns a, .profile-btns button {
@@ -787,3 +795,42 @@ footer {
     opacity: 1;
 }
 
+
+/*OVERLAY*/
+
+.overlay {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    background: rgb(0, 0, 0); 
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.overlay > div {
+    background-color: #fff;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+}
+
+.overlay > div > * {
+    margin: 2rem;
+}
+
+.message-overlay-close-btn {
+    background-color: var(--red);
+    color: #fff;
+    font-weight: 700;
+}

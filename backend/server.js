@@ -48,19 +48,43 @@ app.use('/api/blog/imageUpload', uploadRouter);
 app.get('/', async (req, res) => {
     const articles = await Article.find().sort(
         { createdAt: 'descending' });
-    res.render('blog/index', { articles: articles });
+    res.render('blog/index', {   
+            articles: articles,
+            //metadata
+            meta_title: 'Home',
+            meta_description: 'A blogger\'s paradise. Come in and find out all the magic for yourself!',
+            meta_image: '/words.jpg',
+            meta_url: '',
+            //script
+            script: ''
+        });
 });
 app.get('/about', (req, res) => {
-    res.render('pages/about');
+    res.render('pages/about', {
+        //metadata
+        meta_title: 'About',
+        meta_description: 'Learn more about me here',
+        meta_image: '/words.jpg',
+        meta_url: '',
+        //script
+        script: ''
+    });
 });
 app.get('/contact', async (req, res) => {
     const users = await User.find();
-    res.render('pages/contact', { users: users })
-});
-app.get('/faq', (req,res) => {
-    res.render('pages/faq');
+    res.render('pages/contact', { 
+        users: users,
+        //metadata
+        meta_title: 'Contact',
+        meta_description: 'A blogger\'s paradise. Come in and find out all the magic for yourself!',
+        meta_image: '/words.jpg',
+        meta_url: '',
+        //script
+        script: ''
+     });
 });
 
+//server
 app.listen(config.PORT, () => {
     console.log(`http://localhost:${config.PORT}`);
 });

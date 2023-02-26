@@ -6,30 +6,16 @@ const { generateToken, isAuth, isAdmin } = require('../utils');
 
 const userRouter = express.Router();
 
-//register page
-userRouter.get('/register', (req, res) => {
-    res.render('user/register')
-});
 
-//login page
-userRouter.get('/login', (req, res) => {
-    res.render('user/login')
-});
-
-//admin dashboard page
-userRouter.get('/dashboard', async (req, res) => {
-    const articles = await Article.find().sort(
-        { createdAt: 'descending' });
-    res.render('user/dashboard', { articles: articles })
-});
+//API
 
 //create admin user
 userRouter.get('/createadmin', async (req, res) => {
     try {
         const user = new User({
-            first_name: 'Matt',
-            last_name: 'Cor',
-            email: 'matt@matt.com',
+            first_name: config.ADMIN_FN,
+            last_name: config.ADMIN_LN,
+            email: config.ADMIN_E,
             password: config.ADMIN_PW,
             isAdmin: true
         });
@@ -39,6 +25,54 @@ userRouter.get('/createadmin', async (req, res) => {
         res.status(500).send({ message: err.message });
     }
 });
+
+
+//GET PAGES
+
+//register page
+userRouter.get('/register', (req, res) => {
+    res.render('user/register', {
+         //metadata
+         meta_title: 'Register',
+         meta_description: 'Register your account',
+         meta_image: '/words.jpg',
+         meta_url: '/register',
+         //script
+         script: '<script type="module" src="/scripts/user/register.js" defer></script>'
+    });
+});
+
+//login page
+userRouter.get('/login', (req, res) => {
+    res.render('user/login', {
+         //metadata
+         meta_title: 'Login',
+         meta_description: 'Log in to your account',
+         meta_image: '/words.jpg',
+         meta_url: '/login',
+         //script
+         script: '<script type="module" src="/scripts/user/login.js" defer></script>'
+    });
+});
+
+//admin dashboard page
+userRouter.get('/dashboard', async (req, res) => {
+    const articles = await Article.find().sort(
+        { createdAt: 'descending' });
+    res.render('user/dashboard', { 
+        articles: articles,
+        //metadata
+        meta_title: 'Dashboard',
+        meta_description: 'Your personal user dashboard',
+        meta_image: '/words.jpg',
+        meta_url: '/dashboard',
+        //script
+        script: '<script type="module" src="/scripts/user/logout.js" defer></script>'
+    });
+});
+
+
+//POST
 
 //login user
 userRouter.post('/login', async (req, res) => {
@@ -87,6 +121,9 @@ userRouter.post('/register', async (req, res) => {
     }
 });
 
+
+//PUT
+
 //change user details
 userRouter.put('/:id', isAuth, async (req, res) => {
     const user = await User.findById(req.params.id);
@@ -111,7 +148,10 @@ userRouter.put('/:id', isAuth, async (req, res) => {
     }
 });
 
-//delete user
+
+//DELETE
+
+//user
 userRouter.delete('/:id', isAuth, isAdmin, async (req, res) => {
     const user = await User.findById(req.params.id);
     if(user) {

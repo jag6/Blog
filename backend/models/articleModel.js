@@ -66,8 +66,7 @@ const articleSchema = new mongoose.Schema({
     },
     category_slug: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     sanitizedHtml: {
         type: String,
@@ -84,12 +83,6 @@ const articleSchema = new mongoose.Schema({
 articleSchema.pre('validate', function(next) {
     if(this.title) {
         this.slug = slugify(this.title, {
-            lower: true,
-            strict: true
-        });
-    }
-    if(this.category) {
-        this.category_slug = slugify(this.category, {
             lower: true,
             strict: true
         });

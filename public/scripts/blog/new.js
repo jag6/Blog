@@ -3,7 +3,7 @@ import { getUserInfo } from "../export/cookies.js";
 import { showMessage } from "../export/utils.js";
 
 //post new article
-const newArticle = async ({ title, category, description, markdown, author, image, image_description }) => {
+const newArticle = async ({ title, category, category_slug, description, markdown, author, image, image_description }) => {
     try {
         const { token } = getUserInfo();
         const response = await axios ({
@@ -16,6 +16,7 @@ const newArticle = async ({ title, category, description, markdown, author, imag
             data: {
                 title,
                 category,
+                category_slug,
                 description,
                 markdown,
                 author,
@@ -37,6 +38,7 @@ document.getElementById('new-form').addEventListener('submit', async (e) => {
     const data = await newArticle({
         title: document.getElementById('title').value,
         category: document.getElementById('category').value,
+        category_slug: document.getElementById('category_slug').value,
         description: document.getElementById('description').value,
         markdown: document.getElementById('markdown').value,
         author: document.getElementById('author').value,

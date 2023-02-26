@@ -1,34 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- CSS/Fonts -->
-    <%- include('../components/css') %>
-     <!-- Canonical URL-->
-    <link rel="canonical" href="website.com">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:locale" content="en_US"/>
-    <!-- Page Data -->
-    <title>Blog</title>
-    <meta name="description" content="">
-    <!-- Twitter MetaData -->
-    <meta name="twitter:title" content="">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="">
-    <meta name="twitter:card" content="summary_large_image">
-    <!-- Other Social Media MetaData -->
-    <meta property="og:title" content="">
-    <meta property="og:description" content="">
-    <meta property="og:image" content="">
-    <meta property="og:url" content="">
-    <meta property="og:site_name" content="Blogtopia">
-    <!-- Scripts -->
-    <%- include('../components/scripts') %>
-</head>
-<body>
-    <%- include('../components/header') %>
-    <main>
+<%- include('../components/head') %>
         <div class="banner">
             <img src="/images/read.jpg" alt="reading a book with glasses">
         </div>
@@ -45,40 +15,43 @@
                         </form>
                     </div>
                 </section>
-                <% articles.forEach(article => { %>
-                    <article class="margin-btm-3 article-snippet">
-                        <section class="container-component-level1">
-                            <section>
-                                <h2><%= article.title %></h2>
-                            </section>
-                            <div class="multiple-stuff-div">
-                                <p><%= article.createdAt.toLocaleDateString() %></p>
-                                <a class="b" href="/blog/category/<%= article.category_slug %>"><%= article.category %></a>
-                            </div>
-                            <div class="description container-component-level2">
-                                <%= article.description %>
-                            </div>
-                            <div class="multiple-btns-div">
-                                <a class="btn blue" href="/blog/<%= article.slug %>">Read More</a>
-                                <a href="" class="green btn">Share</a>
-                            </div>
-                        </section>
-                    </article>
-                <% }) %>
+                <ul class="articles-container">
+                    <% articles.forEach(article => { %>
+                        <li>
+                            <article class="margin-btm-3 article-snippet">
+                                <section class="container-component-level1">
+                                    <section>
+                                        <h2><%= article.title %></h2>
+                                    </section>
+                                    <div class="multiple-stuff-div">
+                                        <p><%= article.createdAt.toLocaleDateString() %></p>
+                                        <a class="b" href="/blog/category/<%= article.category_slug %>"><%= article.category %></a>
+                                    </div>
+                                    <div class="description container-component-level2">
+                                        <%= article.description %>
+                                    </div>
+                                    <div class="multiple-btns-div">
+                                        <a class="btn blue" href="/blog/<%= article.slug %>">Read More</a>
+                                        <a href="" class="green btn">Share</a>
+                                    </div>
+                                </section>
+                            </article>
+                        </li>
+                    <% }); %>
+                </ul>
             </section>
             <aside class="category-container">
                 <section>
                     <h2>Categories</h2>
                 </section>
-                <div>
+                <ul>
                     <% articles.forEach(article => { %>
-                        <a href="/blog/category/<%= article.category_slug %>"><%= article.category %></a>
-                    <% }) %>
-                </div>
+                        <li>
+                            <a href="/blog/category/<%= article.category_slug %>"><%= article.category %></a>
+                        </li>
+                    <% }); %>
+                </ul>
             </aside>
         </section>
-    </main>
     <%- include('../components/iconBar') %>
     <%- include('../components/footer') %>
-</body>
-</html>

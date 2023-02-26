@@ -1,32 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- CSS/Fonts -->
-    <%- include('../components/css') %>
-     <!-- Canonical URL-->
-    <link rel="canonical" href="website.com/<%= article.id %>">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:locale" content="en_US"/>
-    <!-- Page Data -->
-    <title>Edit Article</title>
-    <meta name="description" content="Edit Article">
-    <!-- Twitter MetaData -->
-    <meta name="twitter:title" content="Edit Article">
-    <meta name="twitter:description" content="Edit Article">
-    <!-- Other Social Media MetaData -->
-    <meta property="og:title" content="Edit Article">
-    <meta property="og:description" content="Edit Article">
-    <meta property="og:url" content="website.com/<%= article.id %>">
-    <meta property="og:site_name" content="Blogtopia">
-    <!-- Scripts -->
-    <%- include('../components/scripts') %>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script type="module" src="/scripts/blog/edit.js" defer></script>
-</head>
-<body>
-    <%- include('../components/header') %>
+<%- include('../components/head') %>
     <main>
         <section class="myContainer margin-btm-3 article">
             <section class="top">
@@ -37,7 +9,4 @@
                 <%- include('../components/formFields') %>
             </form>
         </section>
-    </main>
     <%- include('../components/footer') %>
-</body>
-</html>
